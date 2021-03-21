@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns1="http://sozi.baierouge.fr" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="0 0 169.47 62" inkscape:version="0.91 r13725">
+  <g transform="translate(-29.062 -15)">
+    <path style="color:#000000" d="m39.825 15c-5.963 0-10.763 5.53-10.763 12.4v37.2c0 6.8696 4.7999 12.4 10.762 12.4h139.91c5.9622 0 10.762-5.5304 10.762-12.4v-6.2h3.8004c2.3423 0 4.2376-2.145 4.2376-4.8438v-15.112c0-2.6988-1.8953-4.8825-4.2376-4.8825h-3.8004v-6.1612c0-6.8696-4.7999-12.4-10.762-12.4l-139.9-0.001z" fill="#008000"/>
+    <path style="color:#000000" d="m45.062 21c-5.54 0-10 4.46-10 10v30c0 5.54 4.46 10 10 10h130c5.54 0 10-4.46 10-10v-5h3.5312c2.1764 0 3.9375-1.7298 3.9375-3.9062v-12.188c0-2.1764-1.7611-3.9375-3.9375-3.9375h-3.5312v-4.9688c0-5.54-4.46-10-10-10h-130z" fill="#060"/>
+    <path style="color:#000000" transform="translate(29.062 15)" fill="#002b00" d="m17.125 8.5312c-4.694 0-8.5 3.8058-8.5 8.4998v27.938c0 4.694 3.801 8.531 8.5 8.531h6.5c4.699 0 8.5-3.837 8.5-8.531v-27.938c0-4.694-3.806-8.4998-8.5-8.4998h-6.5zm24.219 0c-4.694 0-8.5 3.8058-8.5 8.4998v27.938c0 4.694 3.801 8.531 8.5 8.531h6.5c4.699 0 8.5-3.837 8.5-8.531v-27.938c0-4.694-3.806-8.4998-8.5-8.4998h-6.5zm24.218 0c-4.693 0-8.5 3.8058-8.5 8.4998v27.938c0 4.694 3.801 8.531 8.5 8.531h6.5c4.7 0 8.5-3.837 8.5-8.531v-27.938c0-4.694-3.806-8.4998-8.5-8.4998h-6.5zm24.219 0c-4.694 0-8.5 3.8058-8.5 8.4998v27.938c0 4.694 3.801 8.531 8.5 8.531h6.5c4.699 0 8.499-3.837 8.499-8.531v-27.938c0-4.694-3.8-8.4998-8.499-8.4998h-6.5zm24.219 0c-4.69 0-8.5 3.8058-8.5 8.4998v27.938c0 4.694 3.8 8.531 8.5 8.531h6.5c4.7 0 8.5-3.837 8.5-8.531v-27.938c0-4.694-3.81-8.4998-8.5-8.4998h-6.5zm24.22 0c-4.7 0-8.53 3.8008-8.53 8.4998v27.938c0 4.699 3.83 8.531 8.53 8.531h6.47c4.7 0 8.53-3.832 8.53-8.531v-27.938c0-4.699-3.84-8.4998-8.53-8.4998h-6.47z"/>
+    <path style="color:#000000" d="m46.201 24.553h6.4783c4.1492 0 7.4896 3.3404 7.4896 7.4896v27.936c0 4.1492-3.3404 7.4896-7.4896 7.4896h-6.4783c-4.1492 0-7.4896-3.3404-7.4896-7.4896v-27.936c0-4.1492 3.3404-7.4896 7.4896-7.4896z" fill="freeze">
+      <animate id="p1" begin="0s; p12.end" from="#080" attributeName="fill" to="#0f0" attributeType="XML" dur="0.1s"/>
+      <animate id="p7" begin="p6.end" from="#0F0" attributeName="fill" to="#080" attributeType="XML" dur="0.001s"/>
+    </path>
+    <path style="color:#000000" d="m70.418 24.553h6.4783c4.1492 0 7.4896 3.3404 7.4896 7.4896v27.936c0 4.1492-3.3404 7.4896-7.4896 7.4896h-6.4783c-4.1492 0-7.4896-3.3404-7.4896-7.4896v-27.936c0-4.1492 3.3404-7.4896 7.4896-7.4896z" fill="freeze">
+      <animate id="p2" begin="p1.end" from="#080" attributeName="fill" to="#0f0" attributeType="XML" dur="0.1s"/>
+      <animate id="p8" begin="p7.end" from="#0F0" attributeName="fill" to="#080" attributeType="XML" dur="0.001s"/>
+    </path>
+    <path style="color:#000000" d="m94.635 24.553h6.4783c4.1492 0 7.4896 3.3404 7.4896 7.4896v27.936c0 4.1492-3.3404 7.4896-7.4896 7.4896h-6.4783c-4.1492 0-7.4896-3.3404-7.4896-7.4896v-27.936c0-4.1492 3.3404-7.4896 7.4896-7.4896z" fill="freeze">
+      <animate id="p3" begin="p2.end" from="#080" attributeName="fill" to="#0f0" attributeType="XML" dur="0.1s"/>
+      <animate id="p9" begin="p8.end" from="#0F0" attributeName="fill" to="#080" attributeType="XML" dur="0.001s"/>
+    </path>
+    <path style="color:#000000" d="m118.85 24.553h6.4783c4.1492 0 7.4896 3.3404 7.4896 7.4896v27.936c0 4.1492-3.3404 7.4896-7.4896 7.4896h-6.4783c-4.1492 0-7.4896-3.3404-7.4896-7.4896v-27.936c0-4.1492 3.3404-7.4896 7.4896-7.4896z" fill="freeze">
+      <animate id="p4" begin="p3.end" from="#080" attributeName="fill" to="#0f0" attributeType="XML" dur="0.1s"/>
+      <animate id="p10" begin="p9.end" from="#0F0" attributeName="fill" to="#080" attributeType="XML" dur="0.001s"/>
+    </path>
+    <path style="color:#000000" d="m143.07 24.553h6.4783c4.1492 0 7.4896 3.3404 7.4896 7.4896v27.936c0 4.1492-3.3404 7.4896-7.4896 7.4896h-6.4783c-4.1492 0-7.4896-3.3404-7.4896-7.4896v-27.936c0-4.1492 3.3404-7.4896 7.4896-7.4896z" fill="freeze">
+      <animate id="p5" begin="p4.end" from="#080" attributeName="fill" to="#0f0" attributeType="XML" dur="0.1s"/>
+      <animate id="p11" begin="p10.end" from="#0F0" attributeName="fill" to="#080" attributeType="XML" dur="0.001s"/>
+    </path>
+    <path style="color:#000000" d="m167.29 24.553h6.4783c4.1492 0 7.4896 3.3404 7.4896 7.4896v27.936c0 4.1492-3.3404 7.4896-7.4896 7.4896h-6.4783c-4.1492 0-7.4896-3.3404-7.4896-7.4896v-27.936c0-4.1492 3.3404-7.4896 7.4896-7.4896z" fill="freeze">
+      <animate id="p6" begin="p5.end" from="#080" attributeName="fill" to="#0f0" attributeType="XML" dur="0.1s"/>
+      <animate id="p12" begin="p11.end" from="#0F0" attributeName="fill" to="#080" attributeType="XML" dur="0.001s"/>
+    </path>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
