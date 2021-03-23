@@ -85,6 +85,7 @@ function _createClass (Constructor, protoProps, staticProps) { if (protoProps) _
 
         if (this.isAutoplayOn) {
           this.clear()
+          this.isActive = true
         } else {
           this.isAutoplayOn = true
           this.play.className += ' acts'
@@ -220,7 +221,7 @@ function _createClass (Constructor, protoProps, staticProps) { if (protoProps) _
     }) // add event on window listen for keys
 
     w.addEventListener('keyup', function (e) {
-      if (e.isComposing || e.key === 229) return
+      if (!images.isActive || e.isComposing || e.key === 229) return
       e.preventDefault()
 
       if (e.key === 'ArrowLeft') {
