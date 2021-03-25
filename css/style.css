@@ -227,7 +227,7 @@
 #cent img {
   left: 50%;
   height: 100%;
-  width: 100%;
+  width: 80%;
   object-fit: scale-down;
   opacity: 1;
   pointer-events: none;
