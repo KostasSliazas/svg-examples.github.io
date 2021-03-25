@@ -57,6 +57,7 @@
   width: 20%;
   min-width: 48px;
   height: 100%;
+  background: #0000002e;
 }
 
 #ilef,
@@ -76,7 +77,6 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  z-index: -1;
 }
 
 #clos:after,
@@ -222,6 +222,7 @@
   user-select: none;
   width: 100%;
   z-index: 1;
+  background: repeating-linear-gradient(rgba(67, 67, 67, 0.5) 0px, rgba(67, 67, 67, 0.5) 4px, rgba(85, 85, 85, 0.5) 4px, rgba(85, 85, 85, 0.5) 8px), repeating-linear-gradient(90deg, rgba(67, 67, 67, 0.5) 0px, rgba(67, 67, 67, 0.5) 4px, rgba(85, 85, 85, 0.5) 4px, rgba(85, 85, 85, 0.5) 8px) repeat fixed 0% 0%;
 }
 
 #cent img {
