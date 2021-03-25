@@ -157,7 +157,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       value: function show() {
         if (!this.isActive) {
           this.isActive = true;
-          this.imag.className = 'vis';
+          this.imag.className = 'visi';
           w.setTimeout(function () {
             d.body.style.overflow = 'hide';
           }, 110); // delay for body overflow (animation fadeIn/out time + 10ms)
