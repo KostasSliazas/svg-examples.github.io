@@ -1,138 +1,100 @@
-body {
-  margin: 0;
-}
-
-main {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.images-container ul {
-  list-style: none;
-  font-size: 0;
-  padding: 0;
-  margin: 0 auto;
-}
-
-.images-container li {
-  display: inline-block;
-  margin: 0.25em;
-  overflow: hidden;
-  vertical-align: top;
+* {
   box-sizing: border-box;
-  font-size: 16px;
-  clip-path: polygon(10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%, 0 10%);
-}
-
-.images-container {
-  display: block;
-  margin: 0 auto;
-  padding: 0.25em;
-  user-select: none;
-  text-align: center;
-}
-
-.images-container img {
-  object-fit: contain;
-  cursor: pointer;
-  display: block;
-  height: 120px;
-  object-position: center;
-  background: #aaa;
-  width: 200px;
-}
-
-.images-container img,
-.imag img {
-  border-radius: 3px;
 }
 
 #imag {
   background: #000;
-  color: rgba(238, 238, 238, 0.7);
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgba(238, 238, 238, 0.5);
+  font-family: Arial, Helvetica, sans-serif;
   height: 100%;
-  left: 0;
   position: fixed;
-  /*! text-align: center; */
-  top: 0;
   user-select: none;
   width: 100%;
   z-index: 999999;
+  letter-spacing: 2px;
+  font-size: 16px;
+  line-height: 3;
 }
 
-.vis {
+.visi {
   transform: scale(1);
   transition: .2s transform, .2s opacity, .2s visibility;
 }
 
-.hidden {
+.hide {
   opacity: 0;
   pointer-events: none;
   transform: scale(0);
   visibility: hidden;
 }
 
-#foot,
-#head {
-  height: 48px;
-  line-height: 3;
-  position: absolute;
-  width: 100%;
-}
-
-#head {
-  z-index: 2;
-  text-align: center;
-}
-
+#onow,
 #foot {
   bottom: 32px;
   z-index: 1;
-  text-indent: 100px;
+  text-indent: 50px;
 }
 
+#alts {
+  margin-right: 50px;
+}
+
+#foot,
 #clos,
 #play,
 #onow,
 #left,
-#rigt {
+#rigt,
+#wdow {
   box-sizing: border-box;
   cursor: pointer;
-  display: block;
   position: absolute;
   opacity: 0.7;
 }
 
 #left,
 #rigt {
-  width: 30%;
+  width: 20%;
+  min-width: 48px;
   height: 100%;
 }
 
+#ilef,
+#irig,
+#wdow,
 #clos,
-#play,
-#onow {
-  height: 40px;
-  width: 40px;
+#play {
+  height: 48px;
+  width: 48px;
+  background: #749dff33;
+  border-radius: 50%;
 }
 
+#ilef,
+#irig {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+#clos:after,
+#imag,
 #left,
 #rigt {
   top: 0;
 }
 
+#imag,
+#play,
 #left {
   left: 0;
 }
 
+#wdow,
 #rigt {
   right: 0;
-}
-
-#onow,
-#clos {
-  right: 32px;
 }
 
 #clos {
@@ -140,48 +102,39 @@ main {
   z-index: 9;
 }
 
-#clos:before {
-  transform: rotate(45deg);
-}
-
-#clos:after {
-  transform: rotate(-45deg);
-  top: 0;
-}
-
-#left::after,
-#rigt::after {
-  content: "";
-  padding: 14px;
-  border-left: 4px solid #fff;
-  border-top: 4px solid #fff;
-  position: absolute;
-  top: 50%;
-}
-
-#play {
-  left: 32px;
-  border-radius: 50%;
-  border: 4px solid #fff;
-}
-
 #play::after {
   content: "";
-  margin: 6px 8px;
-  border-width: 10px 0 10px 20px;
+  border-width: 5px 0 5px 12px;
   border-style: solid;
   border-color: transparent #fff;
   display: block;
-  padding: 0
+  position: absolute;
+  left: 19px;
+  top: 19px;
+  width: 10px;
+  box-sizing: border-box;
+}
+
+#play::before {
+  content: "";
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: block;
+  position: absolute;
+  left: 12px;
+  height: 24px;
+  width: 24px;
+  box-sizing: border-box;
+  top: 12px;
 }
 
 #play.acts::after {
-  padding-top: 20px;
-  border-width: 0 4px
+  padding-top: 10px;
+  border-width: 0 2px;
 }
 
 #play.acts,
-#onow:hover,
+#wdow:hover,
 #down:hover,
 #play:hover,
 #clos:hover,
@@ -190,7 +143,7 @@ main {
   opacity: 1;
 }
 
-#onow:active,
+#wdow:active,
 #down:active,
 #play:active,
 #clos:active,
@@ -199,30 +152,70 @@ main {
   opacity: .5;
 }
 
-#left::after {
-  transform: translateY(-50%) rotate(-45deg);
-  left: 40px;
+#ilef::after,
+#irig::after {
+  content: "";
+  padding: 9px;
+  position: absolute;
+  transition: .1s transform;
+  top: 14px;
 }
 
-#rigt::after {
-  transform: translateY(-50%) rotate(135deg);
-  right: 40px;
+#onow,
+#clos,
+#irig {
+  right: 32px;
+}
+
+#foot,
+#ilef {
+  left: 32px;
+}
+
+#irig::after,
+#clos:before {
+  transform: rotate(45deg);
+}
+
+#ilef::after,
+#clos:after {
+  transform: rotate(-45deg);
+}
+
+#ilef::after {
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
+  left: 14px;
+}
+
+#irig::after {
+  right: 14px;
+  border-right: 2px solid #fff;
+  border-top: 2px solid #fff;
+}
+
+#left:hover #ilef::after {
+  transform: translateX(-2px) rotate(-45deg);
+}
+
+#rigt:hover #irig::after {
+  transform: translateX(2px) rotate(45deg);
 }
 
 #clos::after,
 #clos::before {
+  border-left: 2px solid #fff;
   content: '';
+  display: block;
+  height: 28px;
+  left: 23px;
   position: absolute;
-  z-index: 1;
+  top: 10px;
   width: 0;
-  border-left: 4px solid #fff;
-  top: 0;
-  height: 32px;
-  left: 18px;
+  z-index: 1;
 }
 
 #cent {
-  display: flex;
   height: 100%;
   position: absolute;
   top: 0;
@@ -245,31 +238,30 @@ main {
 }
 
 #down {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-  border: 4px solid #fff;
-  bottom: 0;
+  border-radius: 0 0 2px 2px;
+  border: 2px solid #fff;
+  top: 27px;
   box-sizing: border-box;
-  display: block;
-  height: 9px;
+  height: 6px;
   pointer-events: none;
   position: absolute;
-  width: 40px;
+  width: 24px;
   border-top: 0;
+  left: 12px;
 }
 
 #down::after {
-  border-bottom: 4px solid #fff;
-  border-left: 4px solid #fff;
-  bottom: 4px;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  bottom: 3px;
   box-sizing: border-box;
   content: "";
   display: block;
-  height: 16px;
-  left: 8px;
+  height: 12px;
+  left: 4px;
   position: absolute;
   transform: rotate(-45deg);
-  width: 16px;
+  width: 12px;
 }
 
 #down::before {
@@ -277,17 +269,10 @@ main {
   box-sizing: border-box;
   content: "";
   display: block;
-  height: 25px;
-  left: 14px;
+  height: 18px;
+  left: 9px;
   margin: 0 auto;
   position: absolute;
-  top: -23px;
-  width: 4px;
-}
-
-@media screen and (max-width: 575.98px) {
-  .images-container img {
-    max-width: 480px;
-    height: auto;
-  }
+  top: -16px;
+  width: 2px;
 }
