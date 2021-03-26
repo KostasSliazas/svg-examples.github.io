@@ -123,15 +123,15 @@
 
     close () {
       this.clear()
-      d.body.style.overflow = 'visible'
       this.imag.className += ' hide'
+      d.body.style.overflow = 'visible'
     }
 
     show () {
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = 'visi'
-
+        this.imag.focus()
         w.setTimeout(() => {
           d.body.style.overflow = 'hidden'
         }, 207) // delay for body overflow (animation fadeIn/out time + 7ms)
