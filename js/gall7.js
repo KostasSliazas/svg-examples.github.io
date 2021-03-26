@@ -170,6 +170,7 @@
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
         images.imagesArray.push(img[j])
+        loadings.call(img[j])
       }
     }
 
@@ -179,7 +180,6 @@
     } else {
       images.imagesContainersArray.forEach(e => e.addEventListener('click', listenForImages))
     }
-    images.imagesArray.forEach((e) => loadings.call(e))
 
     function listenForImages (e) {
       e.preventDefault() // prevent for default browser actions
