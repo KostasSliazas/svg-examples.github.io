@@ -1,3 +1,9 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
 #imag {
   background: #000;
   color: #777;
@@ -13,6 +19,7 @@
   z-index: 9999;
   height: 100vh;
   width: 100vw;
+  will-change: transform, opacity;
 }
 
 .visi {
