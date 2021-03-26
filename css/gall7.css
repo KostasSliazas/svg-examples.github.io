@@ -243,22 +243,22 @@ body {
   overscroll-behavior: none;
   overflow: hidden;
   left: 0;
+  text-align: center;
 }
 
 #cent img {
   background: #111;
   background: linear-gradient(90deg, #111 7px, #070707 7px) 0 0/14px 1px, linear-gradient(#111 7px, #070707 7px) 0 0/ 1px 14px;
-  left: 50%;
-  height: 100%;
-  object-fit: scale-down;
   opacity: 1;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: .5s;
+  position: relative;
   background-blend-mode: difference;
-  max-width: 100%;
   pointer-events: none;
+  object-fit: scale-down;
+  max-height: 100%;
+  max-width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: min-content;
 }
 
 #down {
