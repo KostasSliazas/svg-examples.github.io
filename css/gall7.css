@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  height: 100%;
+  height: 101%;
+  overflow-x: hidden;
 }
 
 #imag {
@@ -23,18 +24,16 @@ body {
 }
 
 .visi {
-  opacity: 1;
-  visibility: visible;
   transform: scale(1);
-  -webkit-transition: .2s transform, .2s opacity, .2s visibility;
+  /* -webkit-transition: .2s transform, .2s opacity, .2s visibility;
   -o-transition: .2s transform, .2s opacity, .2s visibility;
-  transition: .2s transform, .2s opacity, .2s visibility;
+  transition: .2s transform, .2s opacity, .2s visibility; */
 }
 
 .hide {
   opacity: 0;
   pointer-events: none;
-  transform: scale(0);
+  /* transform: scale(0); */
   visibility: hidden;
 }
 

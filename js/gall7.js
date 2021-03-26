@@ -124,17 +124,21 @@
     close () {
       this.clear()
       this.imag.className += ' hide'
-      d.body.style.overflow = 'visible'
+      d.body.style.position = 'static'
+      d.body.style.overflowY = 'visible'
+      // d.body.style.opacity = '1'
     }
 
     show () {
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = 'visi'
-        w.scrollTo(0, d.body.scrollHeight) // prevent from showing bar at bottom firefox (android)
-        w.setTimeout(() => {
-          d.body.style.overflow = 'hidden'
-        }, 207) // delay for body overflow (animation fadeIn/out time + 7ms)
+        // d.body.style.opacity = '0'
+        // this.imag.focus() // prevent from showing bar at bottom firefox (android)
+        // w.setTimeout(() => {
+        d.body.style.position = 'fixed'
+        d.body.style.overflowY = 'hidden'
+        // }, 100) // delay for body overflow
       }
 
       // two lines below for hidding buttons left rigt
