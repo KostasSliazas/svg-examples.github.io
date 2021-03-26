@@ -1,57 +1,72 @@
 body {
-    margin: 0;
-    background: #221724;
-  }
+  margin: 0;
+  background: #ADADAC;
+}
 
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-  }
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
+.images-container ul {
+  list-style: none;
+  font-size: 0;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.images-container li {
+  display: inline-block;
+  margin: 0.25em;
+  vertical-align: top;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 3px;
+  height: 120px;
+  width: 200px;
+  overflow: hidden;
+  background: #FFF5D3;
+  padding: 2px;
+  border: 1px solid #ADADAC;
+}
+
+.images-container {
+  display: block;
+  margin: 0 auto;
+  padding: 0.25em;
+  user-select: none;
+  text-align: center;
+  background: #D9D2BE;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #777;
+}
+
+.images-container img {
+  object-fit: scale-down;
+  cursor: pointer;
+  display: block;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 575.98px) {
   .images-container ul {
-    list-style: none;
-    font-size: 0;
-    padding: 0;
-    margin: 0 auto;
+    margin: 0 4px;
   }
-
+  
   .images-container li {
-    display: inline-block;
-    margin: 0.25em;
-    vertical-align: top;
-    box-sizing: border-box;
-    font-size: 16px;
-    border-radius: 3px;
-    height: 120px;
-    width: 200px;
-    overflow: hidden;
-    background: #6C127F;
-    padding: 2px;
-    border: 1px solid #221724;
-  }
-
-  .images-container {
-    display: block;
-    margin: 0 auto;
-    padding: 0.25em;
-    user-select: none;
+    width: 100%;
+    margin: 4px 0;
     text-align: center;
-    background: #4B2054;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #AA01CE;
+    max-width: 300px;
+    height: auto;
+    max-height: 200px;
   }
 
   .images-container img {
-    object-fit: scale-down;
-    cursor: pointer;
-    display: block;
-    object-position: center;
-    height: 100%;
-    width: 100%;
+    object-fit: cover;
+    text-align: center;
+    margin: 0 auto;
   }
-  
-  @media screen and (max-width: 575.98px) {
-    .images-container img {
-      max-width: 480px;
-    }
-  }
+}
