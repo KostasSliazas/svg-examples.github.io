@@ -8,8 +8,8 @@
   width: 100%;
   z-index: 9999;
   letter-spacing: 2px;
-  font-size: 16px;
-  line-height: 3;
+  font-size: 12px;
+  line-height: 4;
 }
 
 .visi {
@@ -223,6 +223,7 @@
 }
 
 #cent img {
+  background: #111;
   background: linear-gradient(90deg, #111 5px, #070707 5px) 0 0/10px 1px, linear-gradient(#111 5px, #070707 5px) 0 0/ 1px 10px;
   left: 50%;
   height: 100%;
