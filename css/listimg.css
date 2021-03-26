@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background: #E0E0E0;
+    background: #221724;
   }
 
   main {
@@ -18,12 +18,16 @@ body {
   .images-container li {
     display: inline-block;
     margin: 0.25em;
-    overflow: hidden;
     vertical-align: top;
     box-sizing: border-box;
     font-size: 16px;
-    border: 1px solid #FFFCF3;
-    border-radius: 2px;
+    border-radius: 3px;
+    height: 120px;
+    width: 200px;
+    overflow: hidden;
+    background: #6C127F;
+    padding: 2px;
+    border: 1px solid #221724;
   }
 
   .images-container {
@@ -32,19 +36,20 @@ body {
     padding: 0.25em;
     user-select: none;
     text-align: center;
+    background: #4B2054;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #AA01CE;
   }
 
   .images-container img {
     object-fit: scale-down;
     cursor: pointer;
     display: block;
-    height: 120px;
     object-position: center;
-    background: #ECEBE8;
-    width: 200px;
-    margin: 1px;
+    height: 100%;
+    width: 100%;
   }
- 
+  
   @media screen and (max-width: 575.98px) {
     .images-container img {
       max-width: 480px;
