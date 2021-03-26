@@ -20,9 +20,14 @@ body {
   will-change: transform, opacity;
 
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.scro {
+  overflow: clip;
+  height: 101%;
 }
 
 .visi {
@@ -235,7 +240,7 @@ body {
   user-select: none;
   width: 100%;
   z-index: 1;
-  overscroll-behavior: contain;
+  overscroll-behavior: none;
   overflow: hidden;
   left: 0;
 }
