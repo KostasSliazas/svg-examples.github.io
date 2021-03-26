@@ -152,7 +152,6 @@
   }
 
   function loadings () {
-    console.log(this)
     if (this.parentElement.tagName === 'LI') {
       this.parentElement.className = 'stop'
     } else return false
