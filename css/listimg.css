@@ -16,6 +16,7 @@ main {
 }
 
 .images-container li {
+  position: relative;
   display: inline-block;
   margin: 0.25em;
   vertical-align: top;
@@ -28,6 +29,7 @@ main {
   background: #E7E7F1;
   padding: 2px;
   border: 1px solid #B5B5FF;
+  color: #fff;
 }
 
 .images-container {
@@ -38,7 +40,6 @@ main {
   text-align: center;
   background: #C7C7F7;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #777;
 }
 
 .images-container img {
@@ -48,13 +49,57 @@ main {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  position: relative;
+  color: transparent;
+}
+
+.stop::after,
+.stop::before {
+  display: none;
+}
+
+.images-container li::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #777;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.images-container li::after {
+  content: "";
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  animation: load .5s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  margin: -12px 0 0 -12px;
+  box-sizing: border-box;
+  animation-play-state: inherit;
+}
+
+@keyframes load {
+  0% {
+    transform: rotateZ(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 575.98px) {
   .images-container ul {
     margin: 0 4px;
   }
-  
+
   .images-container li {
     width: 100%;
     margin: 4px 0;

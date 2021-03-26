@@ -131,7 +131,7 @@
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = 'visi'
-        this.imag.focus()
+        this.imag.focus() // prevent from showing bar at bottom firefox (android)
         w.setTimeout(() => {
           d.body.style.overflow = 'hidden'
         }, 207) // delay for body overflow (animation fadeIn/out time + 7ms)
@@ -158,6 +158,12 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
+        img[j].onload = function () {
+          const isThereParent = img[j].parentElement.tagName === 'LI'
+          if (isThereParent) {
+            img[j].parentElement.className = 'stop'
+          } else return false
+        }
         images.imagesArray.push(img[j])
       }
     }

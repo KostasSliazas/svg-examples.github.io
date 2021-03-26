@@ -15,9 +15,9 @@ body {
   position: fixed;
   width: 100%;
   z-index: 9999;
+  height: 100vh;
   width: 100vw;
   will-change: transform, opacity;
-
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -25,6 +25,8 @@ body {
 }
 
 .visi {
+  opacity: 1;
+  visibility: visible;
   transform: scale(1);
   -webkit-transition: .2s transform, .2s opacity, .2s visibility;
   -o-transition: .2s transform, .2s opacity, .2s visibility;
