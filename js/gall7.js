@@ -124,7 +124,7 @@
     close () {
       this.clear()
       this.imag.className = 'hide'
-      d.body.style.position = 'static'
+      // d.body.style.position = 'static'
       d.body.style.overflowY = 'visible'
       // d.body.style.opacity = '1'
     }
@@ -136,7 +136,7 @@
         // d.body.style.opacity = '0'
         // this.imag.focus() // prevent from showing bar at bottom firefox (android)
         // w.setTimeout(() => {
-        d.body.style.position = 'fixed'
+        // d.body.style.position = 'fixed'
         d.body.style.overflowY = 'hidden'
         // }, 100) // delay for body overflow
       }
