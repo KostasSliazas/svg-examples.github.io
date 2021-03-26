@@ -59,9 +59,7 @@ main {
     width: 100%;
     margin: 4px 0;
     text-align: center;
-    max-width: 300px;
-    height: auto;
-    max-height: 200px;
+    height: 196px;
   }
 
   .images-container img {
