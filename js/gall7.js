@@ -123,7 +123,7 @@
 
     close () {
       this.clear()
-      this.imag.className += ' hide'
+      this.imag.className = 'hide'
       d.body.style.position = 'static'
       d.body.style.overflowY = 'visible'
       // d.body.style.opacity = '1'
@@ -132,7 +132,7 @@
     show () {
       if (!this.isActive) {
         this.isActive = true
-        this.imag.className = 'visi'
+        this.imag.className = ''
         // d.body.style.opacity = '0'
         // this.imag.focus() // prevent from showing bar at bottom firefox (android)
         // w.setTimeout(() => {

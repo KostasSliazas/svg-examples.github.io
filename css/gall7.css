@@ -23,12 +23,12 @@ body {
   user-select: none;
 }
 
-.visi {
-  transform: scale(1);
+/* .visi { */
+  /* transform: scale(1); */
   /* -webkit-transition: .2s transform, .2s opacity, .2s visibility;
   -o-transition: .2s transform, .2s opacity, .2s visibility;
   transition: .2s transform, .2s opacity, .2s visibility; */
-}
+/* } */
 
 .hide {
   opacity: 0;
