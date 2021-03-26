@@ -13,7 +13,6 @@
   z-index: 9999;
   height: 100vh;
   width: 100vw;
-  overscroll-behavior: none;
 }
 
 .visi {
@@ -224,6 +223,9 @@
   user-select: none;
   width: 100%;
   z-index: 1;
+  overscroll-behavior: contain;
+  overflow: hidden;
+  left: 0;
 }
 
 #cent img {
@@ -233,13 +235,13 @@
   height: 100%;
   object-fit: scale-down;
   opacity: 1;
-  pointer-events: none;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   transition: .5s;
   background-blend-mode: difference;
   max-width: 100%;
+  pointer-events: none;
 }
 
 #down {
