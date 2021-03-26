@@ -131,7 +131,7 @@
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = 'visi'
-        this.imag.focus() // prevent from showing bar at bottom firefox (android)
+        w.scrollTo(0, d.body.scrollHeight) // prevent from showing bar at bottom firefox (android)
         w.setTimeout(() => {
           d.body.style.overflow = 'hidden'
         }, 207) // delay for body overflow (animation fadeIn/out time + 7ms)
