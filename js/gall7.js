@@ -151,6 +151,13 @@
     }
   }
 
+  function loadings () {
+    console.log(this)
+    if (this.parentElement.tagName === 'LI') {
+      this.parentElement.className = 'stop'
+    } else return false
+  }
+
   d.addEventListener('DOMContentLoaded', () => {
     const cont = d.getElementsByClassName('images-container')[0] ? d.getElementsByClassName('images-container') : [d.body] // check and set any container default = body
     const images = new CreateUI(cont) // create UI for gallery slides after all DOM Loaded
@@ -162,13 +169,8 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].onload = function () {
-          const isThereParent = img[j].parentElement.tagName === 'LI'
-          if (isThereParent) {
-            img[j].parentElement.className = 'stop'
-          } else return false
-        }
         images.imagesArray.push(img[j])
+        img[j].addEventListener('load', loadings.call(img[j])) // remove spiners functions
       }
     }
 
