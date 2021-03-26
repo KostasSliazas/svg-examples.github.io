@@ -169,7 +169,6 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].onload = loadings.bind(img[j]) // remove spiners functions
         images.imagesArray.push(img[j])
       }
     }
@@ -180,9 +179,8 @@
     } else {
       images.imagesContainersArray.forEach(e => e.addEventListener('click', listenForImages))
     }
-    w.addEventListener('load', () => {
-      images.imagesArray.forEach((e) => e.onload())
-    })
+    images.imagesArray.forEach((e) => loadings.call(e))
+
     function listenForImages (e) {
       e.preventDefault() // prevent for default browser actions
       e.stopPropagation()
