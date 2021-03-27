@@ -168,13 +168,13 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].onload = loadings.bind(img[j])
+        img[j].onload = setTimeout(loadings.bind(img[j]), 77)
         images.imagesArray.push(img[j])
       }
     }
     w.addEventListener('load', () => {
       images.imagesArray.forEach(function (e) {
-        setTimeout(() => e.onload(), 10)
+        e.onload()
       })
     })
 
