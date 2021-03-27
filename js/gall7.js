@@ -29,6 +29,7 @@
       this.head = d.createElement('div')
       this.imgs.src = 'data:,'
       this.imgs.setAttribute('alt', '')
+      this.imag.appendChild(this.head)
       this.imag.appendChild(this.clos)
       this.imag.appendChild(this.cent).appendChild(this.imgs)
       this.cent.appendChild(this.rigt).appendChild(this.irig)
@@ -38,7 +39,6 @@
       this.onow.appendChild(this.alts)
       this.foot.appendChild(this.fine)
       this.frag.appendChild(this.imag)
-      this.imag.appendChild(this.head)
       this.head.id = 'head'
       this.alts.id = 'alts'
       this.foot.id = 'foot'
