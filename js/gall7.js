@@ -152,8 +152,9 @@
   }
 
   function loadings () {
-    if (this.parentElement.tagName === 'LI') {
-      this.parentElement.className = 'stop'
+    const elem = this.parentElement
+    if (elem.tagName === 'LI') {
+      this.onload = setTimeout(() => { elem.className += 'stop' }, 10)
     } else return false
   }
 
@@ -168,8 +169,8 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        images.imagesArray.push(img[j])
         loadings.call(img[j])
+        images.imagesArray.push(img[j])
       }
     }
 
