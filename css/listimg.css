@@ -53,11 +53,6 @@ main {
   color: transparent;
 }
 
-.stop::after,
-.stop::before {
-  display: none;
-}
-
 .images-container li::before {
   content: "";
   width: 100%;
@@ -66,11 +61,13 @@ main {
   position: absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.images-container li::after {
+#cent::after, .images-container li::after {
   content: "";
-  border: 2px solid #fff;
+  border: 2px solid rgba(200, 200, 200, 0.5);
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
   animation: load .5s linear infinite;
@@ -82,7 +79,8 @@ main {
   width: 24px;
   margin: -12px 0 0 -12px;
   box-sizing: border-box;
-  animation-play-state: inherit;
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes load {
