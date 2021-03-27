@@ -168,10 +168,15 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].onload = loadings.call(img[j])
+        img[j].onload = loadings.bind(img[j])
         images.imagesArray.push(img[j])
       }
     }
+    w.addEventListener('load', () => {
+      images.imagesArray.forEach(function (e) {
+        e.onload()
+      })
+    })
 
     if (images.imagesContainersArray[0].tagName === 'BODY') {
       images.imagesArray.pop() // remove last element from array if body is selected
