@@ -135,6 +135,7 @@
         this.isActive = true
         this.imag.className = ''
         d.body.style.overflowY = 'hidden'
+        this.imag.focus()
       }
 
       this.cent.className = ''
@@ -146,7 +147,7 @@
   }
 
   function addClassStop (clas) {
-    setTimeout(() => { this.className = clas }, 100)
+    setTimeout(() => { this.className = clas }, 77)
   }
 
   function loadings () {
