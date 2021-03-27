@@ -174,7 +174,7 @@
     }
     w.addEventListener('load', () => {
       images.imagesArray.forEach(function (e) {
-        e.onload()
+        setTimeout(() => e.onload(), 10)
       })
     })
 
