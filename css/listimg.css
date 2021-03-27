@@ -67,7 +67,7 @@ main {
 
 #cent::after, .images-container li::after {
   content: "";
-  border: 2px solid rgba(200, 200, 200, 0.5);
+  border: 2px solid rgba(200, 200, 200, 0.7);
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
   animation: load .5s linear infinite;

@@ -23,12 +23,6 @@ body {
   user-select: none;
 }
 
-/* .visi { */
-  /* transform: scale(1); */
-  /* -webkit-transition: .2s transform, .2s opacity, .2s visibility;
-  -o-transition: .2s transform, .2s opacity, .2s visibility;
-  transition: .2s transform, .2s opacity, .2s visibility; */
-/* } */
 .hide,
 .stop::after,
 .stop::before {
@@ -224,8 +218,7 @@ body {
   z-index: 1;
 }
 
-#cent {
-  height: 100%;
+#head, #cent {
   position: absolute;
   top: 0;
   user-select: none;
@@ -236,7 +229,12 @@ body {
   left: 0;
   text-align: center;
 }
-
+#cent{
+  height: 100%;
+}
+#head{
+  height: 72px;
+}
 #cent img {
   background: #111;
   background: linear-gradient(90deg, #111 7px, #070707 7px) 0 0/14px 1px, linear-gradient(#111 7px, #070707 7px) 0 0/ 1px 14px;
