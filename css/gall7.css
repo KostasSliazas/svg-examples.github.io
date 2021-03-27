@@ -223,7 +223,6 @@ body {
   top: 0;
   user-select: none;
   width: 100%;
-  z-index: 1;
   overscroll-behavior: none;
   overflow: hidden;
   left: 0;
@@ -234,6 +233,7 @@ body {
 }
 #head{
   height: 72px;
+  z-index: 1;
 }
 #cent img {
   background: #111;
