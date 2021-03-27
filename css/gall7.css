@@ -3,7 +3,7 @@ body {
   overflow-x: hidden;
 }
 
-#imag {
+#imag7 {
   background: #000;
   color: #777;
   font-family: Arial, Helvetica, sans-serif;
@@ -15,64 +15,63 @@ body {
   position: fixed;
   width: 100%;
   z-index: 9999;
-  will-change: transform, opacity;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-.hide,
-.stop::after,
-.stop::before {
+.hide7,
+.stop7::after,
+.stop7::before {
   display: none;
 }
 
-#onow,
-#foot {
+#onow7,
+#foot7 {
   bottom: 24px;
   z-index: 1;
   text-indent: 50px;
 }
 
-#alts {
+#alts7 {
   margin-right: 50px;
 }
 
-#foot,
-#clos,
-#play,
-#onow,
-#left,
-#rigt,
-#wdow {
+#foot7,
+#clos7,
+#play7,
+#onow7,
+#left7,
+#rigt7,
+#wdow7 {
   box-sizing: border-box;
   cursor: pointer;
   position: absolute;
   opacity: 0.7;
 }
 
-#left,
-#rigt {
+#left7,
+#rigt7 {
   width: 10%;
   min-width: 80px;
   height: 100%;
   background: none;
 }
 
-#ilef,
-#irig,
-#wdow,
-#clos,
-#play {
+#ilef7,
+#irig7,
+#wdow7,
+#clos7,
+#play7 {
   height: 48px;
   width: 48px;
   background: none;
   border-radius: 50%;
 }
 
-#ilef,
-#irig {
+#ilef7,
+#irig7 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -80,30 +79,30 @@ body {
   z-index: -1;
 }
 
-#clos:after,
-#imag,
-#left,
-#rigt {
+#clos7:after,
+#imag7,
+#left7,
+#rigt7 {
   top: 0;
 }
 
-#imag,
-#play,
-#left {
+#imag7,
+#play7,
+#left7 {
   left: 0;
 }
 
-#wdow,
-#rigt {
+#wdow7,
+#rigt7 {
   right: 0;
 }
 
-#clos {
+#clos7 {
   top: 24px;
   z-index: 9;
 }
 
-#play::after {
+#play7::after {
   content: "";
   border-width: 5px 0 5px 12px;
   border-style: solid;
@@ -116,7 +115,7 @@ body {
   box-sizing: border-box;
 }
 
-#play::before {
+#play7::before {
   content: "";
   border-radius: 50%;
   border: 2px solid #fff;
@@ -129,33 +128,33 @@ body {
   top: 12px;
 }
 
-#play.acts::after {
+#play7.acts7::after {
   padding-top: 10px;
   border-width: 0 2px;
 }
 
-#play.acts,
-#wdow:hover,
-#down:hover,
-#play:hover,
-#clos:hover,
-#left:hover #ilef,
-#rigt:hover #irig {
+#play7.acts7,
+#wdow7:hover,
+#down7:hover,
+#play7:hover,
+#clos7:hover,
+#left7:hover #ilef,
+#rigt7:hover #irig {
   opacity: 1;
   background: rgba(160, 160, 160, 0.1);
 }
 
-#wdow:active,
-#down:active,
-#play:active,
-#clos:active,
-#left:active,
-#rigt:active {
+#wdow7:active,
+#down7:active,
+#play7:active,
+#clos7:active,
+#left7:active,
+#rigt7:active {
   opacity: .5;
 }
 
-#ilef::after,
-#irig::after {
+#ilef7::after,
+#irig7::after {
   content: "";
   padding: 9px;
   position: absolute;
@@ -163,49 +162,49 @@ body {
   top: 14px;
 }
 
-#onow,
-#clos,
-#irig {
+#onow7,
+#clos7,
+#irig7 {
   right: 24px;
 }
 
-#foot,
-#ilef {
+#foot7,
+#ilef7 {
   left: 24px;
 }
 
-#irig::after,
-#clos:before {
+#irig7::after,
+#clos7:before {
   transform: rotate(45deg);
 }
 
-#ilef::after,
-#clos:after {
+#ilef7::after,
+#clos7:after {
   transform: rotate(-45deg);
 }
 
-#ilef::after {
+#ilef7::after {
   border-left: 2px solid #fff;
   border-top: 2px solid #fff;
   left: 14px;
 }
 
-#irig::after {
+#irig7::after {
   right: 14px;
   border-right: 2px solid #fff;
   border-top: 2px solid #fff;
 }
 
-#left:hover #ilef::after {
+#left7:hover #ilef7::after {
   transform: translateX(-2px) rotate(-45deg);
 }
 
-#rigt:hover #irig::after {
+#rigt7:hover #irig7::after {
   transform: translateX(2px) rotate(45deg);
 }
 
-#clos::after,
-#clos::before {
+#clos7::after,
+#clos7::before {
   border-left: 2px solid #fff;
   content: '';
   display: block;
@@ -217,7 +216,7 @@ body {
   z-index: 1;
 }
 
-#head, #cent {
+#head7, #cent7 {
   position: absolute;
   top: 0;
   user-select: none;
@@ -227,14 +226,14 @@ body {
   left: 0;
   text-align: center;
 }
-#cent{
+#cent7{
   height: 100%;
 }
-#head{
+#head7{
   height: 72px;
   z-index: 1;
 }
-#cent img {
+#cent7 img {
   background: #111;
   background: linear-gradient(90deg, #111 7px, #070707 7px) 0 0/14px 1px, linear-gradient(#111 7px, #070707 7px) 0 0/ 1px 14px;
   opacity: 1;
@@ -249,7 +248,7 @@ body {
   height: min-content;
 }
 
-#down {
+#down7 {
   border-radius: 0 0 2px 2px;
   border: 2px solid #fff;
   top: 27px;
@@ -262,7 +261,7 @@ body {
   left: 12px;
 }
 
-#down::after {
+#down7::after {
   border-bottom: 2px solid #fff;
   border-left: 2px solid #fff;
   bottom: 3px;
@@ -276,7 +275,7 @@ body {
   width: 12px;
 }
 
-#down::before {
+#down7::before {
   background: #fff;
   box-sizing: border-box;
   content: "";
