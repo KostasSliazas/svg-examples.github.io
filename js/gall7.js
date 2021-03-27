@@ -133,33 +133,25 @@
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = ''
-        // this.imag.focus() // prevent from showing bar at bottom firefox (android)
-        // w.setTimeout(() => {
-        // d.body.style.position = 'fixed'
         d.body.style.overflowY = 'hidden'
-        // }, 100) // delay for body overflow
       }
 
-      // two lines below for hidding buttons left rigt
-      // this.left.className = this.indexOfImage === 0 ? 'visi hide' : 'visi'
-      // this.rigt.className = this.indexOfImage === this.imagesArray.length - 1 ? 'visi hide' : 'visi'
       this.cent.className = ''
-
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
       this.fine.innerText = Number(this.indexOfImage + 1) + '/' + this.imagesArray.length
-      const that = this
-      this.imgs.onload = function () {
-        setTimeout(() => { that.cent.className = 'stop' }, 200)
-      }
-
+      this.imgs.onload = addClassStop.call(this.cent)
       this.imgs.src = this.imagesArray[this.indexOfImage].src
     }
+  }
+
+  function addClassStop () {
+    setTimeout(() => { this.className = 'stop' }, 100)
   }
 
   function loadings () {
     const elem = this.parentElement
     if (elem.tagName === 'LI') {
-      elem.className += 'stop'
+      addClassStop.call(elem)
     } else return false
   }
 
