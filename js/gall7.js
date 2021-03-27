@@ -39,21 +39,21 @@
       this.onow.appendChild(this.alts)
       this.foot.appendChild(this.fine)
       this.frag.appendChild(this.imag)
-      this.head.id = 'head'
-      this.alts.id = 'alts'
-      this.foot.id = 'foot'
-      this.clos.id = 'clos'
-      this.rigt.id = 'rigt'
-      this.left.id = 'left'
-      this.play.id = 'play'
-      this.onow.id = 'onow'
-      this.down.id = 'down'
-      this.cent.id = 'cent'
-      this.imag.id = 'imag'
-      this.wdow.id = 'wdow'
-      this.irig.id = 'irig'
-      this.ilef.id = 'ilef'
-      this.imag.className = 'visi hide'
+      this.head.id = 'head7'
+      this.alts.id = 'alts7'
+      this.foot.id = 'foot7'
+      this.clos.id = 'clos7'
+      this.rigt.id = 'rigt7'
+      this.left.id = 'left7'
+      this.play.id = 'play7'
+      this.onow.id = 'onow7'
+      this.down.id = 'down7'
+      this.cent.id = 'cent7'
+      this.imag.id = 'imag7'
+      this.wdow.id = 'wdow7'
+      this.irig.id = 'irig7'
+      this.ilef.id = 'ilef7'
+      this.imag.className = 'hide7'
       d.body.appendChild(this.frag)
     }
 
@@ -67,7 +67,7 @@
         this.isActive = true
       } else {
         this.isAutoplayOn = true
-        this.play.className += ' acts'
+        this.play.className += ' acts7'
 
         const delay = () => {
           that.right()
@@ -90,7 +90,7 @@
     clear () {
       clearTimeout(this.tim)
       this.tim = 0
-      this.play.className = 'play'
+      this.play.className = 'play7'
       this.isActive = false
       this.isAutoplayOn = false
     }
@@ -126,7 +126,7 @@
 
     close () {
       this.clear()
-      this.imag.className = 'hide'
+      this.imag.className = 'hide7'
       d.body.style.overflowY = 'visible'
     }
 
@@ -141,19 +141,21 @@
       this.cent.className = ''
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
       this.fine.innerText = Number(this.indexOfImage + 1) + '/' + this.imagesArray.length
-      this.imgs.onload = addClassStop.call(this.cent, 'stop')
+      this.imgs.onload = addClassStop.call(this.cent, 'stop7')
       this.imgs.src = this.imagesArray[this.indexOfImage].src
     }
   }
 
   function addClassStop (clas) {
-    setTimeout(() => { this.className = clas }, 77)
+    setTimeout(() => {
+      this.className = clas
+    }, 77)
   }
 
   function loadings () {
     const elem = this.parentElement
     if (elem.tagName === 'LI') {
-      addClassStop.call(elem, 'stop')
+      addClassStop.call(elem, 'stop7')
     }
     return false
   }
@@ -184,6 +186,7 @@
     function listenForImages (e) {
       e.preventDefault() // prevent for default browser actions
       e.stopPropagation()
+      if (e.target.tagName !== 'IMG') return false
       images.indexOfImage = images.imagesArray.indexOf(e.target) ? images.imagesArray.indexOf(e.target) : 0 // set image index on click
       images.show()
     }
@@ -192,27 +195,29 @@
       e.preventDefault() // prevent for default browser actions
       e.stopPropagation()
 
-      switch (e.target.id || e.target.tagName) {
-        case 'rigt':
+      switch (e.target.id) {
+        case 'rigt7':
           images.clear()
           images.right()
           images.show()
           break
-        case 'left':
+        case 'left7':
           images.clear()
           images.lefts()
           images.show()
           break
-        case 'play':
+        case 'play7':
           images.autoPlay()
           break
-        case 'wdow':
+        case 'wdow7':
           if (images.imagesArray[images.indexOfImage].src === images.onow.dataset.selected) return
           images.downloads()
           break
-        case 'clos':
+        case 'clos7':
           images.close()
           break
+        default:
+          return false
       }
       return false
     }
