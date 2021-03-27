@@ -124,9 +124,7 @@
     close () {
       this.clear()
       this.imag.className = 'hide'
-      // d.body.style.position = 'static'
       d.body.style.overflowY = 'visible'
-      // d.body.style.opacity = '1'
     }
 
     show () {
@@ -139,20 +137,21 @@
       this.cent.className = ''
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
       this.fine.innerText = Number(this.indexOfImage + 1) + '/' + this.imagesArray.length
-      this.imgs.onload = addClassStop.call(this.cent)
+      this.imgs.onload = addClassStop.call(this.cent, 'stop')
       this.imgs.src = this.imagesArray[this.indexOfImage].src
     }
   }
 
-  function addClassStop () {
-    setTimeout(() => { this.className = 'stop' }, 100)
+  function addClassStop (clas) {
+    setTimeout(() => { this.className = clas }, 100)
   }
 
   function loadings () {
     const elem = this.parentElement
     if (elem.tagName === 'LI') {
-      addClassStop.call(elem)
-    } else return false
+      addClassStop.call(elem, 'stop')
+    }
+    return false
   }
 
   d.addEventListener('DOMContentLoaded', () => {
