@@ -242,7 +242,7 @@ body {
   pointer-events: none;
   object-fit: scale-down;
   max-height: 100%;
-  max-width: 100%;
+  max-width: 80%;
   top: 50%;
   transform: translateY(-50%);
   height: min-content;
