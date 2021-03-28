@@ -96,6 +96,7 @@
     }
 
     downloads () {
+      if (this.imagesArray[this.indexOfImage].src === this.onow.dataset.selected) return false
       const a = d.createElement('a')
       a.setAttribute('rel', 'noopener noreferrer')
       a.target = '_blank'
@@ -137,27 +138,22 @@
         d.body.style.overflowY = 'hidden'
         this.imag.focus()
       }
-
       this.cent.className = ''
-      this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
-      this.fine.innerText = Number(this.indexOfImage + 1) + '/' + this.imagesArray.length
-      this.imgs.onload = addClassStop.call(this.cent, 'stop7')
-      this.imgs.src = this.imagesArray[this.indexOfImage].src
-    }
-  }
 
-  function addClassStop (clas) {
-    setTimeout(() => {
-      this.className = clas
-    }, 77)
+      const that = this
+      this.imgs.onload = function () {
+        that.cent.className = 'stop7'
+        that.alts.innerText = that.imagesArray[that.indexOfImage].src.slice(that.imagesArray[that.indexOfImage].src.lastIndexOf('/') + 1)
+        that.fine.innerText = Number(that.indexOfImage + 1) + '/' + that.imagesArray.length
+      }
+      this.imgs.src = this.imagesArray[this.indexOfImage].src
+      return false
+    }
   }
 
   function loadings () {
     const elem = this.parentElement
-    if (elem.tagName === 'LI') {
-      addClassStop.call(elem, 'stop7')
-    }
-    return false
+    elem.tagName === 'LI' && (elem.className = 'stop7')
   }
 
   d.addEventListener('DOMContentLoaded', () => {
@@ -171,7 +167,7 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].onload = setTimeout(loadings.call(img[j]), 77)
+        img[j].onload = loadings.call(img[j])
         images.imagesArray.push(img[j])
       }
     }
@@ -180,7 +176,9 @@
       images.imagesArray.pop() // remove last element from array if body is selected
       d.addEventListener('click', listenForImages)
     } else {
-      images.imagesContainersArray.forEach(e => e.addEventListener('click', listenForImages))
+      for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
+        images.imagesContainersArray[i].addEventListener('click', listenForImages)
+      }
     }
 
     function listenForImages (e) {
@@ -192,9 +190,8 @@
     }
 
     function controls (e) {
-      e.preventDefault() // prevent for default browser actions
+      e.preventDefault()
       e.stopPropagation()
-
       switch (e.target.id) {
         case 'rigt7':
           images.clear()
@@ -210,7 +207,6 @@
           images.autoPlay()
           break
         case 'wdow7':
-          if (images.imagesArray[images.indexOfImage].src === images.onow.dataset.selected) return
           images.downloads()
           break
         case 'clos7':
@@ -219,7 +215,6 @@
         default:
           return false
       }
-      return false
     }
 
     images.imag.addEventListener('click', controls)
