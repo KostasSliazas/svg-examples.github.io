@@ -216,7 +216,8 @@ body {
   z-index: 1;
 }
 
-#head7, #cent7 {
+#head7,
+#cent7 {
   position: absolute;
   top: 0;
   user-select: none;
@@ -226,13 +227,16 @@ body {
   left: 0;
   text-align: center;
 }
-#cent7{
+
+#cent7 {
   height: 100%;
 }
-#head7{
+
+#head7 {
   height: 72px;
   z-index: 1;
 }
+
 #cent7 img {
   background: #111;
   background: linear-gradient(90deg, #111 7px, #070707 7px) 0 0/14px 1px, linear-gradient(#111 7px, #070707 7px) 0 0/ 1px 14px;
