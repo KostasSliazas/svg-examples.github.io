@@ -139,9 +139,11 @@
         this.imag.focus()
       }
       this.cent.className = ''
+      this.imgs.style.opacity = 0
 
       const that = this
       this.imgs.onload = function () {
+        that.imgs.style.opacity = 1
         that.cent.className = 'stop7'
         that.alts.innerText = that.imagesArray[that.indexOfImage].src.slice(that.imagesArray[that.indexOfImage].src.lastIndexOf('/') + 1)
         that.fine.innerText = Number(that.indexOfImage + 1) + '/' + that.imagesArray.length
