@@ -243,7 +243,7 @@ body {
 
 #insi7 img {
   background: #111;
-  background: linear-gradient(90deg, #333 7px, #000 7px) 0 0/14px 1px, linear-gradient(#333 7px, #000 7px) 0 0/ 1px 14px;
+  background: linear-gradient(90deg, #555 7px, #777 7px) 0 0/14px 1px, linear-gradient(#555 7px, #777 7px) 0 0/ 1px 14px;
   opacity: 1;
   position: relative;
   background-blend-mode: difference;
