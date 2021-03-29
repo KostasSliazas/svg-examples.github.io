@@ -62,9 +62,7 @@
 
     autoPlay () {
       const that = this
-      if (that.indexOfImage === that.imagesArray.length - 1) {
-        that.indexOfImage = -1 // reset from first image to show
-      }
+
       if (this.isAutoplayOn) {
         this.clear()
         this.isActive = true
@@ -84,6 +82,7 @@
           }, 1000)
           if (that.indexOfImage === that.imagesArray.length - 1) {
             that.clear()
+            this.isActive = true
           }
         }
         delay()
@@ -180,7 +179,7 @@
 
     function controls (e) {
       e.preventDefault() // prevent for default browser actions
-      e.stopPropagation()
+      // e.stopPropagation()
 
       switch (e.target.id) {
         case 'rigt7':
