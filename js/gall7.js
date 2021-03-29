@@ -3,13 +3,6 @@
   'use strict'
   class CreateUI {
     constructor (container) {
-      this.tim = 0
-      this.imagesContainersArray = [] // get all images containers
-      this.imagesArray = [] // get all images
-      this.container = container
-      this.indexOfImage = 0
-      this.isActive = false
-      this.isAutoplayOn = false
       this.frag = d.createDocumentFragment()
       this.imag = d.createElement('div')
       this.cent = d.createElement('div')
@@ -27,12 +20,12 @@
       this.ilef = d.createElement('div')
       this.irig = d.createElement('div')
       this.head = d.createElement('div')
-      this.imgs.src = 'data:,'
-      this.imgs.setAttribute('alt', '')
+      this.insi = d.createElement('div')
       this.imag.appendChild(this.head)
       this.imag.appendChild(this.clos)
-      this.imag.appendChild(this.cent).appendChild(this.imgs)
+      this.imag.appendChild(this.cent)
       this.cent.appendChild(this.rigt).appendChild(this.irig)
+      this.cent.appendChild(this.insi).appendChild(this.imgs)
       this.cent.appendChild(this.left).appendChild(this.ilef)
       this.imag.appendChild(this.foot).appendChild(this.play)
       this.imag.appendChild(this.onow).appendChild(this.wdow).appendChild(this.down)
@@ -53,8 +46,18 @@
       this.wdow.id = 'wdow7'
       this.irig.id = 'irig7'
       this.ilef.id = 'ilef7'
+      this.insi.id = 'insi7'
+      this.imgs.src = 'data:,'
+      this.imgs.setAttribute('alt', '')
       this.imag.className = 'hide7'
       d.body.appendChild(this.frag)
+      this.tim = 0
+      this.imagesContainersArray = [] // get all images containers
+      this.imagesArray = [] // get all images
+      this.container = container
+      this.indexOfImage = 0
+      this.isActive = false
+      this.isAutoplayOn = false
     }
 
     autoPlay () {
@@ -96,7 +99,6 @@
     }
 
     downloads () {
-      if (this.imagesArray[this.indexOfImage].src === this.onow.dataset.selected) return false
       const a = d.createElement('a')
       a.setAttribute('rel', 'noopener noreferrer')
       a.target = '_blank'
@@ -108,18 +110,14 @@
     }
 
     lefts () {
-      // this line at bottom can be commented for stop at first index of image (now goes around)
       if (this.indexOfImage === 0) this.indexOfImage = this.imagesArray.length
-
       if (this.indexOfImage > 0) {
         this.indexOfImage--
       }
     }
 
     right () {
-      // this line at bottom can be commented for stop at last of image (now goes around)
       if (this.indexOfImage === this.imagesArray.length - 1) this.indexOfImage = -1
-
       if (this.indexOfImage < this.imagesArray.length - 1) {
         this.indexOfImage++
       }
@@ -138,29 +136,19 @@
         d.body.style.overflowY = 'hidden'
         this.imag.focus()
       }
-      this.cent.className = ''
-      this.imgs.style.opacity = 0
-
-      const that = this
-      this.imgs.onload = function () {
-        that.imgs.style.opacity = 1
-        that.cent.className = 'stop7'
-        that.alts.innerText = that.imagesArray[that.indexOfImage].src.slice(that.imagesArray[that.indexOfImage].src.lastIndexOf('/') + 1)
-        that.fine.innerText = Number(that.indexOfImage + 1) + '/' + that.imagesArray.length
+      this.insi.className = 'spin7'
+      this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
+      this.fine.innerText = Number(this.indexOfImage + 1) + '/' + this.imagesArray.length
+      this.imgs.onload = () => {
+        this.insi.classList = ''
       }
       this.imgs.src = this.imagesArray[this.indexOfImage].src
-      return false
     }
-  }
-
-  function loadings () {
-    const elem = this.parentElement
-    elem.tagName === 'LI' && (elem.className = 'stop7')
   }
 
   d.addEventListener('DOMContentLoaded', () => {
     const cont = d.getElementsByClassName('images-container')[0] ? d.getElementsByClassName('images-container') : [d.body] // check and set any container default = body
-    const images = new CreateUI(cont) // create UI for gallery slides after all DOM Loaded
+    const images = new CreateUI(cont)
 
     for (let i = images.container.length - 1; i >= 0; i--) {
       images.imagesContainersArray.push(images.container[i])
@@ -169,7 +157,8 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].onload = loadings.call(img[j])
+        img[j].addEventListener('load', () => { img[j].parentElement.className = '' })
+        img[j].parentElement.className = 'spin7'
         images.imagesArray.push(img[j])
       }
     }
@@ -178,9 +167,7 @@
       images.imagesArray.pop() // remove last element from array if body is selected
       d.addEventListener('click', listenForImages)
     } else {
-      for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
-        images.imagesContainersArray[i].addEventListener('click', listenForImages)
-      }
+      images.imagesContainersArray.forEach(e => e.addEventListener('click', listenForImages))
     }
 
     function listenForImages (e) {
@@ -192,8 +179,9 @@
     }
 
     function controls (e) {
-      e.preventDefault()
+      e.preventDefault() // prevent for default browser actions
       e.stopPropagation()
+
       switch (e.target.id) {
         case 'rigt7':
           images.clear()
@@ -209,6 +197,7 @@
           images.autoPlay()
           break
         case 'wdow7':
+          if (images.imagesArray[images.indexOfImage].src === images.onow.dataset.selected) return
           images.downloads()
           break
         case 'clos7':
@@ -217,10 +206,10 @@
         default:
           return false
       }
+      return false
     }
 
     images.imag.addEventListener('click', controls)
-    // add event on window listen for keys
     w.addEventListener('keyup', (e) => {
       if (!images.isActive || e.isComposing || e.key === 229) return
       e.preventDefault()
@@ -238,5 +227,4 @@
       e.key === ' ' && images.autoPlay()
     })
   })
-  // w.imagges = CreateUI
 })(window, document)
