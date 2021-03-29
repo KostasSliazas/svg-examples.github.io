@@ -68,6 +68,9 @@ a {
   font-size: 16px;
   line-height: 1;
   display: inline-block;
+  align-self: center;
+  margin: auto;
+  user-select: none;
 }
 
 a:active {
@@ -88,6 +91,7 @@ footer {
   text-align: center;
   width: 100%;
   overflow: hidden;
+  user-select: none;
 }
 
 .inside,
@@ -107,4 +111,9 @@ main {
 
 .inside {
   columns: 2;
+}
+
+.wrap {
+  display: flex;
+  background: #000;
 }
