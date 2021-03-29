@@ -239,6 +239,7 @@ body {
   height: 100%;
   margin: 0 auto;
   position: relative;
+  pointer-events: none;
 }
 
 #insi7 img {
@@ -247,13 +248,11 @@ body {
   opacity: 1;
   position: relative;
   background-blend-mode: difference;
-  pointer-events: none;
   object-fit: scale-down;
   max-height: 100%;
   max-width: 100%;
   top: 50%;
   transform: translateY(-50%);
-  height: min-content;
 }
 
 #down7 {
