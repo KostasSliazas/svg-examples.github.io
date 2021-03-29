@@ -3,6 +3,7 @@ body {
   color: #e0f0ea;
   background: #3c2a4d;
 }
+
 span,
 h1,
 h2,
@@ -69,16 +70,16 @@ a {
   display: inline-block;
 }
 
-a:hover {
-  background: #95adbe;
-}
-
 a:active {
   background-color: #080008;
 }
 
 a:visited {
-  background-color: #ccc;
+  background-color: #574f7d;
+}
+
+a:hover {
+  background: #95adbe;
 }
 
 header,
