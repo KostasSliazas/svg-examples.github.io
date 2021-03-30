@@ -104,7 +104,7 @@ footer {
 .inside,
 main {
   margin: 0 auto;
-  padding: .75em 1.5em;
+  padding: .75em 0;
   width: auto;
   max-width: 1000px;
   min-height: 120px;
