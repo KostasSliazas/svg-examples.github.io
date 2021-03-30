@@ -70,7 +70,6 @@
       } else {
         this.isAutoplayOn = true
         this.play.className = 'acts7'
-
         const delay = () => {
           that.right()
           that.show()
@@ -83,10 +82,10 @@
           }, 1000)
           if (that.indexOfImage === that.imagesArray.length - 1) {
             that.clear()
-            this.isActive = true
+            that.isActive = true
           }
         }
-        delay()
+        this.imgs.onload = delay()
       }
     }
 

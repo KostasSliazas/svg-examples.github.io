@@ -1,7 +1,7 @@
 body {
-  font: 16px/1.5 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: #000;
-  background: #49534F;
+  font: 16px/1.5 'Kodchasan', sans-serif;
+  color: #085656;
+  background: #f7f7f7;
 }
 
 span,
@@ -11,12 +11,11 @@ h3,
 p {
   margin: 0;
   line-height: 1.5;
-  display: inline-block;
 }
 
 h1 {
   margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0;
   font-size: 1.5em;
   line-height: 1;
   text-align: center;
@@ -31,39 +30,37 @@ h3 {
 
 
 .codes {
-  color: #d4d4d4;
-  font-family: 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback';
   text-align: left;
-  background: #454A4E;
-}
-
-.grey {
-  color: #79736B;
+  background: #fff;
 }
 
 .blueligth {
-  color: #427DAB;
+  color: #122960;
 }
 
 .blue {
-  color: #3396E2;
+  color: #243E79;
 }
 
 .yelow {
-  color: #FFB757;
+  color: #8F480D;
 }
 
 .green {
-  color: #3EB582;
+  color: #0A730A;
   user-select: none;
 }
 
 .greys {
-  color: #D2957C;
+  color: #176C6C;
+}
+
+.grey {
+  color: #085656;
 }
 
 a {
-  background: #547187;
+  background: #085656;
   color: #fff;
   padding: 1em 1.5em;
   text-decoration: none;
@@ -75,6 +72,8 @@ a {
   display: inline-block;
   margin: auto;
   user-select: none;
+  letter-spacing: 3px;
+  font-weight: 700;
 }
 
 a:active {
@@ -82,30 +81,26 @@ a:active {
 }
 
 a:visited {
-  background-color: #547187;
+  background-color: #085656;
 }
 
 a:hover {
-  background: #454A4E;
+  background: #176C6C;
 }
 
 header,
 footer {
-  background: #427DAB;
-  text-align: center;
   width: 100%;
-  overflow: hidden;
   user-select: none;
-  max-width: 1000px;
-  margin: .75em auto 0;
-  color: #fff;
+  margin: 0 auto;
+  color: #085656;
+  z-index: 1;
+  position: relative;
 }
 
 .inside,
 main {
   margin: 0 auto;
-  padding: .75em 0;
-  width: auto;
   max-width: 1000px;
   min-height: 120px;
   overflow: hidden;
@@ -117,14 +112,16 @@ main {
 
 .inside {
   columns: 2;
+  padding: 0 .5em;
 }
 
 .wrap {
   display: flex;
-  background: #427DAB;
+  background: #eee;
+  margin: 0 .5em;
 }
 
-.wrap>div{
+.wrap>div {
   padding: 0 .75em;
   margin: auto;
 }
@@ -134,8 +131,12 @@ main {
   display: inline-block;
   white-space: pre-wrap;
 }
+
 @media screen and (max-width: 575.98px) {
   .wrap {
     flex-direction: column;
+  }
+  .inside {
+    columns: 1;
   }
 }
