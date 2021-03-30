@@ -49,6 +49,7 @@
       this.insi.id = 'insi7'
       this.imgs.src = 'data:,'
       this.imgs.setAttribute('alt', '')
+      this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
       d.body.appendChild(this.frag)
       this.tim = 0
@@ -133,7 +134,7 @@
         this.isActive = true
         this.imag.className = ''
         d.body.style.overflowY = 'hidden'
-        // this.imag.focus()
+        this.imag.focus()
       }
       this.insi.className = 'spin7'
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
