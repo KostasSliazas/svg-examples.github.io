@@ -3,6 +3,13 @@
   'use strict'
   class CreateUI {
     constructor (container) {
+      this.tim = 0
+      this.imagesContainersArray = [] // get all images containers
+      this.imagesArray = [] // get all images
+      this.container = container
+      this.indexOfImage = 0
+      this.isActive = false
+      this.isAutoplayOn = false
       this.frag = d.createDocumentFragment()
       this.imag = d.createElement('div')
       this.cent = d.createElement('div')
@@ -50,18 +57,11 @@
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
-      d.body.appendChild(this.frag)
-      this.tim = 0
-      this.imagesContainersArray = [] // get all images containers
-      this.imagesArray = [] // get all images
-      this.container = container
-      this.indexOfImage = 0
-      this.isActive = false
-      this.isAutoplayOn = false
       this.imgs.onload = () => {
         this.insi.classList = ''
       }
       this.imgs.src = 'data:,'
+      d.body.appendChild(this.frag)
     }
 
     autoPlay () {
