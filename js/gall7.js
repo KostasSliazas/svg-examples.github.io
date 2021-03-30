@@ -47,7 +47,6 @@
       this.irig.id = 'irig7'
       this.ilef.id = 'ilef7'
       this.insi.id = 'insi7'
-      this.imgs.src = 'data:,'
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
@@ -62,6 +61,7 @@
       this.imgs.onload = () => {
         this.insi.classList = ''
       }
+      this.imgs.src = 'data:,'
     }
 
     autoPlay () {
