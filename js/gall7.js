@@ -155,8 +155,11 @@
 
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
+      images.imagesContainersArray[i].classList.add('main7')
       for (let j = 0; j < img.length; j++) {
-        img[j].addEventListener('load', () => { img[j].parentElement.className = '' })
+        img[j].addEventListener('load', () => {
+          img[j].parentElement.className = ''
+        })
         img[j].parentElement.className = 'spin7'
         images.imagesArray.push(img[j])
       }
@@ -177,9 +180,15 @@
       images.show()
     }
 
+    window.onload = () => {
+      for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
+        images.imagesContainersArray[i].classList.remove('main7')
+      }
+    }
+
     function controls (e) {
       e.preventDefault() // prevent for default browser actions
-      // e.stopPropagation()
+      e.stopPropagation()
 
       switch (e.target.id) {
         case 'rigt7':
