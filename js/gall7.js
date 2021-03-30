@@ -68,7 +68,7 @@
         this.isActive = true
       } else {
         this.isAutoplayOn = true
-        this.play.className += ' acts7'
+        this.play.className = 'acts7'
 
         const delay = () => {
           that.right()
@@ -92,7 +92,7 @@
     clear () {
       clearTimeout(this.tim)
       this.tim = 0
-      this.play.className = 'play7'
+      this.play.className = ''
       this.isActive = false
       this.isAutoplayOn = false
     }
@@ -133,7 +133,7 @@
         this.isActive = true
         this.imag.className = ''
         d.body.style.overflowY = 'hidden'
-        this.imag.focus()
+        // this.imag.focus()
       }
       this.insi.className = 'spin7'
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)

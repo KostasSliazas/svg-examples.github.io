@@ -189,7 +189,7 @@ body {
   top: 0;
   user-select: none;
   width: 100%;
-  overscroll-behavior: none;
+  overscroll-behavior: contain;
   overflow: hidden;
   left: 0;
   text-align: center;
@@ -304,10 +304,14 @@ body {
   z-index: 1
 }
 
+li.spin7::before {
+  background: #aaa;
+}
+
 .spin7::after {
   animation: load .5s linear infinite;
   border-radius: 50%;
-  border: 2px solid rgba(200, 200, 200, .7);
+  border: 2px solid #fff;
   border-bottom: 2px solid transparent;
   border-top: 2px solid transparent;
   box-sizing: border-box;
