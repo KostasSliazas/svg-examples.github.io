@@ -217,7 +217,6 @@ body {
   background: linear-gradient(90deg, #555 7px, #777 7px) 0 0/14px 1px, linear-gradient(#555 7px, #777 7px) 0 0/ 1px 14px;
   position: relative;
   background-blend-mode: difference;
-  object-fit: scale-down;
   max-height: 100%;
   max-width: 100%;
   top: 50%;
@@ -246,8 +245,8 @@ body {
   top: 12px
 }
 
-.spin7::after,
-.spin7::before,
+.main7 .spin7::after,
+.main7 .spin7::before,
 #down7::after,
 #down7::before,
 #play7::before,
