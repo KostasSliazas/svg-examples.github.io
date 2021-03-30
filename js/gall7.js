@@ -155,7 +155,6 @@
 
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
-      images.imagesContainersArray[i].classList.add('main7')
       for (let j = 0; j < img.length; j++) {
         img[j].addEventListener('load', () => {
           img[j].parentElement.className = ''
@@ -178,12 +177,6 @@
       if (e.target.tagName !== 'IMG') return false
       images.indexOfImage = images.imagesArray.indexOf(e.target) ? images.imagesArray.indexOf(e.target) : 0 // set image index on click
       images.show()
-    }
-
-    window.onload = () => {
-      for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
-        images.imagesContainersArray[i].classList.remove('main7')
-      }
     }
 
     function controls (e) {

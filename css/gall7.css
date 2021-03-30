@@ -245,8 +245,8 @@ body {
   top: 12px
 }
 
-.main7 .spin7::after,
-.main7 .spin7::before,
+.spin7::after,
+.spin7::before,
 #down7::after,
 #down7::before,
 #play7::before,
