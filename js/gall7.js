@@ -80,7 +80,7 @@
             if (this.indexOfImage < this.imagesArray.length - 1) {
               delay()
             }
-          }, 1000)
+          }, 1500)
           if (this.indexOfImage === this.imagesArray.length - 1) {
             this.clear()
             this.isActive = true
