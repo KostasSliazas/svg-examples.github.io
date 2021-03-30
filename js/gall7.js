@@ -59,11 +59,12 @@
       this.indexOfImage = 0
       this.isActive = false
       this.isAutoplayOn = false
+      this.imgs.onload = () => {
+        this.insi.classList = ''
+      }
     }
 
     autoPlay () {
-      const that = this
-
       if (this.isAutoplayOn) {
         this.clear()
         this.isActive = true
@@ -71,21 +72,21 @@
         this.isAutoplayOn = true
         this.play.className = 'acts7'
         const delay = () => {
-          that.right()
-          that.show()
-          that.tim = setTimeout(() => {
-            clearTimeout(that.tim)
-            that.tim = 0
-            if (that.indexOfImage < that.imagesArray.length - 1) {
+          this.right()
+          this.show()
+          this.tim = setTimeout(() => {
+            clearTimeout(this.tim)
+            this.tim = 0
+            if (this.indexOfImage < this.imagesArray.length - 1) {
               delay()
             }
           }, 1000)
-          if (that.indexOfImage === that.imagesArray.length - 1) {
-            that.clear()
-            that.isActive = true
+          if (this.indexOfImage === this.imagesArray.length - 1) {
+            this.clear()
+            this.isActive = true
           }
         }
-        this.imgs.onload = delay()
+        delay()
       }
     }
 
@@ -138,9 +139,7 @@
       this.insi.className = 'spin7'
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
       this.fine.innerText = Number(this.indexOfImage + 1) + '/' + this.imagesArray.length
-      this.imgs.onload = () => {
-        this.insi.classList = ''
-      }
+
       this.imgs.src = this.imagesArray[this.indexOfImage].src
     }
   }
