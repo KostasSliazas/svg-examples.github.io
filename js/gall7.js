@@ -151,9 +151,9 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        images.imagesArray[j].onload = remso.bind(images.imagesArray[j])
         img[j].parentElement.className = 'spin7'
         images.imagesArray.push(img[j])
+        images.imagesArray[j].onload = remso.bind(img[j])
       }
     }
     if (images.imagesContainersArray[0].tagName === 'BODY') {
