@@ -151,9 +151,7 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].addEventListener('load', () => {
-          img[j].parentElement.className = ''
-        })
+        img[j].onload = remso.call(img[j])
         img[j].parentElement.className = 'spin7'
         images.imagesArray.push(img[j])
       }
