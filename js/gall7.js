@@ -59,7 +59,7 @@
       this.imag.className = 'hide7'
       this.imgs.src = 'data:,'
       d.body.appendChild(this.frag)
-      remso.call(this.imgs)
+      this.imgs.onload = remso.bind(this.imgs)
     }
 
     autoPlay () {
@@ -137,9 +137,7 @@
   }
 
   function remso () {
-    this.onload = () => {
-      this.parentElement.className = ''
-    }
+    this.parentElement.className = ''
   }
 
   d.addEventListener('DOMContentLoaded', () => {
@@ -153,12 +151,11 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        remso.call(img[j])
         img[j].parentElement.className = 'spin7'
         images.imagesArray.push(img[j])
+        images.imagesArray[j].onload = remso.bind(images.imagesArray[j])
       }
     }
-
     if (images.imagesContainersArray[0].tagName === 'BODY') {
       images.imagesArray.pop() // remove last element from array if body is selected
       d.addEventListener('click', listenForImages)
