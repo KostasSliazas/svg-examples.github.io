@@ -57,9 +57,9 @@
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
-      this.imgs.onload = remso.bind(this)
       this.imgs.src = 'data:,'
       d.body.appendChild(this.frag)
+      remso.call(this.imgs)
     }
 
     autoPlay () {
@@ -137,7 +137,9 @@
   }
 
   function remso () {
-    this.insi.classList = ''
+    this.onload = () => {
+      this.parentElement.className = ''
+    }
   }
 
   d.addEventListener('DOMContentLoaded', () => {
@@ -151,7 +153,7 @@
     for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
-        img[j].onload = remso.call(img[j])
+        remso.call(img[j])
         img[j].parentElement.className = 'spin7'
         images.imagesArray.push(img[j])
       }
