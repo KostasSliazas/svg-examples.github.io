@@ -57,9 +57,7 @@
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
-      this.imgs.onload = () => {
-        this.insi.classList = ''
-      }
+      this.imgs.onload = () => { this.insi.classList = '' }
       this.imgs.src = 'data:,'
       d.body.appendChild(this.frag)
     }
@@ -74,6 +72,10 @@
         const delay = () => {
           this.right()
           this.show()
+          if (this.indexOfImage === this.imagesArray.length - 1) {
+            this.clear()
+            this.isActive = true
+          }
           this.tim = setTimeout(() => {
             clearTimeout(this.tim)
             this.tim = 0
@@ -81,10 +83,6 @@
               delay()
             }
           }, 1500)
-          if (this.indexOfImage === this.imagesArray.length - 1) {
-            this.clear()
-            this.isActive = true
-          }
         }
         delay()
       }

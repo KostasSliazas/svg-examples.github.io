@@ -19,21 +19,30 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  white-space: nowrap;
 }
 
 .hide7 {
   display: none;
 }
 
+#foot7 {
+  text-indent: 50px;
+}
+
 #onow7,
 #foot7 {
   bottom: 24px;
   z-index: 1;
-  text-indent: 50px;
+  width: calc(50% - 24px);
+  overflow: hidden;
 }
 
 #alts7 {
-  margin-right: 50px;
+  right: 50px;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #foot7,
@@ -133,6 +142,7 @@ body {
 #clos7,
 #irig7 {
   right: 24px;
+  text-align: right;
 }
 
 #foot7,
@@ -201,7 +211,7 @@ body {
 
 #head7 {
   height: 72px;
-  z-index: 1;
+  z-index: 2;
 }
 
 #insi7 {
