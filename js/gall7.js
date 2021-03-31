@@ -57,6 +57,7 @@
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
+      this.imgs.onload = remso.bind(this)
       this.imgs.src = 'data:,'
       d.body.appendChild(this.frag)
     }
@@ -135,10 +136,14 @@
     }
   }
 
+  function remso () {
+    this.insi.classList = ''
+  }
+
   d.addEventListener('DOMContentLoaded', () => {
     const cont = d.getElementsByClassName('images-container')[0] ? d.getElementsByClassName('images-container') : [d.body] // check and set any container default = body
     const images = new CreateUI(cont)
-    images.onload = () => { this.insi.classList = '' }
+
     for (let i = images.container.length - 1; i >= 0; i--) {
       images.imagesContainersArray.push(images.container[i])
     }
