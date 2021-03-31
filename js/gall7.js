@@ -63,23 +63,22 @@
     }
 
     autoPlay () {
+      if (!this.isActive) return false
       if (this.isAutoplayOn) {
         this.clear()
-        this.isActive = true
       } else {
-        this.isAutoplayOn = true
         this.play.className = 'acts7'
+        this.isAutoplayOn = true
+
         const delay = () => {
           this.right()
           this.show()
-          if (this.indexOfImage === this.imagesArray.length - 1) {
-            this.clear()
-            this.isActive = true
-          }
           this.tim = setTimeout(() => {
             clearTimeout(this.tim)
             this.tim = 0
-            if (this.indexOfImage < this.imagesArray.length - 1) {
+            if (this.indexOfImage === this.imagesArray.length - 1 && this.isAutoplayOn) {
+              this.clear()
+            } else {
               delay()
             }
           }, 1500)
@@ -91,9 +90,8 @@
     clear () {
       clearTimeout(this.tim)
       this.tim = 0
-      this.play.className = ''
-      this.isActive = false
       this.isAutoplayOn = false
+      this.play.className = ''
     }
 
     downloads () {
@@ -109,20 +107,17 @@
 
     lefts () {
       if (this.indexOfImage === 0) this.indexOfImage = this.imagesArray.length
-      if (this.indexOfImage > 0) {
-        this.indexOfImage--
-      }
+      this.indexOfImage--
     }
 
     right () {
       if (this.indexOfImage === this.imagesArray.length - 1) this.indexOfImage = -1
-      if (this.indexOfImage < this.imagesArray.length - 1) {
-        this.indexOfImage++
-      }
+      this.indexOfImage++
     }
 
     close () {
       this.clear()
+      this.isActive = false
       this.imag.className = 'hide7'
       d.body.style.overflowY = 'visible'
     }
@@ -136,7 +131,7 @@
       }
       this.insi.className = 'spin7'
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
-      this.fine.innerText = Number(this.indexOfImage + 1) + '/' + this.imagesArray.length
+      this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.imagesArray.length
       this.imgs.src = this.imagesArray[this.indexOfImage].src
     }
   }
@@ -208,7 +203,7 @@
 
     images.imag.addEventListener('click', controls)
     w.addEventListener('keyup', (e) => {
-      if (!images.isActive || e.isComposing || e.key === 229) return
+      if (!images.isActive || e.isComposing || e.key === 229) return false
       e.preventDefault()
       if (e.key === 'ArrowLeft') {
         images.clear()
