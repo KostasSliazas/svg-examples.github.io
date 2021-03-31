@@ -34,13 +34,13 @@ body {
 #foot7 {
   bottom: 24px;
   z-index: 1;
+  width: 40%;
   width: calc(50% - 24px);
   overflow: hidden;
 }
 
 #alts7 {
-  right: 50px;
-  position: relative;
+  margin-right: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
