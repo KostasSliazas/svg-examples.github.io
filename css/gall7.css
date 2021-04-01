@@ -233,6 +233,10 @@ body {
   transform: translateY(-50%);
 }
 
+#insi7 img[src$=".svg"] {
+  height: 100%;
+}
+
 #down7 {
   border-radius: 0 0 2px 2px;
   border: 2px solid #fff;

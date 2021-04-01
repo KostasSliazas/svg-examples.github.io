@@ -166,11 +166,12 @@
     }
 
     function listenForImages (e) {
-      e.preventDefault() // prevent for default browser actions
-      e.stopPropagation()
-      if (e.target.tagName !== 'IMG') return false
-      images.indexOfImage = images.imagesArray.indexOf(e.target) ? images.imagesArray.indexOf(e.target) : 0 // set image index on click
-      images.show()
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault() // prevent for default browser actions
+        e.stopPropagation()
+        images.indexOfImage = images.imagesArray.indexOf(e.target) ? images.imagesArray.indexOf(e.target) : 0 // set image index on click
+        images.show()
+      }
     }
 
     function controls (e) {

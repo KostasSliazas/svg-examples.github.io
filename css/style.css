@@ -11,6 +11,13 @@ h3,
 p {
   margin: 0;
   line-height: 1.5;
+  position: relative;
+  font-size: 16px;
+}
+
+p {
+  padding: 0 1.5em;
+  margin: auto;
 }
 
 h1 {
@@ -46,8 +53,12 @@ h3 {
   color: #8F480D;
 }
 
+img,
 .green {
   color: #0A730A;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -98,35 +109,45 @@ footer {
   position: relative;
 }
 
+main {
+  text-align: center;
+  background: #ddd;
+}
+
 .inside,
 main {
   margin: 0 auto;
   max-width: 1000px;
   min-height: 120px;
   overflow: hidden;
-}
-
-main {
-  text-align: right;
-}
-
-.inside {
-  columns: 2;
-  padding: 0 .5em;
+  font-size: 0;
 }
 
 .wrap {
   display: flex;
   background: #eee;
-  margin: 0 .5em;
+  position: relative;
 }
 
-.wrap>div {
-  padding: 0 .75em;
-  margin: auto;
+.codes {
+  counter-reset: numbers;
 }
 
-.select span,
+.codes p::before {
+  counter-increment: numbers;
+  content: counter(numbers);
+  position: absolute;
+  left: 0;
+  text-align: center;
+  top: 0;
+  display: block;
+  width: 1.5em;
+  background: #ddd;
+  height: 100%;
+  color: #fff;
+}
+
+.select p,
 .select div {
   display: inline-block;
   white-space: pre-wrap;
@@ -136,6 +157,7 @@ main {
   .wrap {
     flex-direction: column;
   }
+
   .inside {
     columns: 1;
   }
