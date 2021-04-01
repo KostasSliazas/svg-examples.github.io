@@ -134,10 +134,10 @@
         this.imag.focus()
       }
       this.insi.className = 'spin7'
-      this.loaded(this.imgs)
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
       this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.imagesArray.length
       this.imgs.src = this.imagesArray[this.indexOfImage].src
+      this.loaded(this.imgs)
     }
   }
 
