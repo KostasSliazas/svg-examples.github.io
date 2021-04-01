@@ -63,7 +63,7 @@
 
     loaded (e) {
       e.onload = e => { e.target.parentElement.className = '' }
-      e = this.imgs
+      e.src = e.src
     }
 
     autoPlay () {
