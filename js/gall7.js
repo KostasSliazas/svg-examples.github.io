@@ -57,9 +57,13 @@
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
-      this.imgs.src = 'data:,'
       d.body.appendChild(this.frag)
-      this.imgs.onload = remso.bind(this.imgs)
+      this.imgs.src = 'data:,'
+    }
+
+    loaded (e) {
+      e.onload = e => { e.target.parentElement.className = '' }
+      e.src = e.src // set same src to re/load image
     }
 
     autoPlay () {
@@ -130,14 +134,11 @@
         this.imag.focus()
       }
       this.insi.className = 'spin7'
+      this.loaded(this.imgs)
       this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
       this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.imagesArray.length
       this.imgs.src = this.imagesArray[this.indexOfImage].src
     }
-  }
-
-  function remso () {
-    this.parentElement.className = ''
   }
 
   d.addEventListener('DOMContentLoaded', () => {
@@ -153,9 +154,10 @@
       for (let j = 0; j < img.length; j++) {
         img[j].parentElement.className = 'spin7'
         images.imagesArray.push(img[j])
-        images.imagesArray[j].onload = remso.bind(img[j])
+        images.loaded(img[j])
       }
     }
+
     if (images.imagesContainersArray[0].tagName === 'BODY') {
       images.imagesArray.pop() // remove last element from array if body is selected
       d.addEventListener('click', listenForImages)
