@@ -57,13 +57,13 @@
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
-      d.body.appendChild(this.frag)
       this.imgs.src = 'data:,'
+      d.body.appendChild(this.frag)
     }
 
     loaded (e) {
       e.onload = e => { e.target.parentElement.className = '' }
-      e.src = e.src // set same src to re/load image
+      e = this.imgs
     }
 
     autoPlay () {
@@ -153,8 +153,8 @@
       const img = images.imagesContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
         img[j].parentElement.className = 'spin7'
-        images.imagesArray.push(img[j])
         images.loaded(img[j])
+        images.imagesArray.push(img[j])
       }
     }
 
