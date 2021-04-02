@@ -33,7 +33,7 @@ body {
 #onow7,
 #foot7 {
   bottom: 24px;
-  z-index: 1;
+  z-index: 4;
   width: 40%;
   width: calc(50% - 24px);
   overflow: hidden;
@@ -304,22 +304,18 @@ body {
   width: 2px
 }
 
-.spin7::after,
-.spin7::before {
-  pointer-events: none
-}
-
 .spin7::before {
   background: #000;
   height: 100%;
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 1
+  z-index: 1;
 }
 
 li.spin7::before {
-  background: #aaa;
+  background: #eee;
+  z-index: 1;
 }
 
 .spin7::after {
@@ -334,7 +330,7 @@ li.spin7::before {
   margin: -12px 0 0 -12px;
   top: 50%;
   width: 24px;
-  z-index: 2
+  z-index: 2;
 }
 
 @keyframes load {
@@ -344,5 +340,11 @@ li.spin7::before {
 
   to {
     transform: rotate(360deg)
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  #insi7 {
+    max-width: 100%;
   }
 }
