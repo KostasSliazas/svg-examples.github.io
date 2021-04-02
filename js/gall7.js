@@ -175,9 +175,8 @@
     }
 
     function controls (e) {
-      e.preventDefault() // prevent for default browser actions
       e.stopPropagation()
-
+      e.preventDefault() // prevent for default browser actions
       switch (e.target.id) {
         case 'rigt7':
           images.clear()
