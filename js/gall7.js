@@ -204,7 +204,7 @@
       return false
     }
 
-    images.imag.addEventListener('click', controls)
+    images.imag.addEventListener('click', controls, true)
     w.addEventListener('keyup', (e) => {
       if (!images.isActive || e.isComposing || e.key === 229) return false
       e.preventDefault()
