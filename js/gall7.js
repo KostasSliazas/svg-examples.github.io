@@ -28,32 +28,24 @@
       this.irig = d.createElement('div')
       this.head = d.createElement('div')
       this.insi = d.createElement('div')
-      this.imag.appendChild(this.head)
-      this.imag.appendChild(this.clos)
-      this.imag.appendChild(this.cent)
-      this.cent.appendChild(this.rigt).appendChild(this.irig)
+      this.imag.appendChild(this.head).id = 'head7'
+      this.imag.appendChild(this.clos).id = 'clos7'
+      this.imag.appendChild(this.cent).id = 'cent7'
+      this.onow.appendChild(this.alts).id = 'alts7'
+      this.frag.appendChild(this.imag).id = 'imag7'
+      this.cent.appendChild(this.rigt).appendChild(this.irig).id = 'irig7'
       this.cent.appendChild(this.insi).appendChild(this.imgs)
-      this.cent.appendChild(this.left).appendChild(this.ilef)
-      this.imag.appendChild(this.foot).appendChild(this.play)
+      this.cent.appendChild(this.left).appendChild(this.ilef).id = 'ilef7'
+      this.imag.appendChild(this.foot).appendChild(this.play).id = 'play7'
       this.imag.appendChild(this.onow).appendChild(this.wdow).appendChild(this.down)
-      this.onow.appendChild(this.alts)
       this.foot.appendChild(this.fine)
-      this.frag.appendChild(this.imag)
-      this.head.id = 'head7'
-      this.alts.id = 'alts7'
       this.foot.id = 'foot7'
-      this.clos.id = 'clos7'
       this.rigt.id = 'rigt7'
+      this.insi.id = 'insi7'
       this.left.id = 'left7'
-      this.play.id = 'play7'
       this.onow.id = 'onow7'
       this.down.id = 'down7'
-      this.cent.id = 'cent7'
-      this.imag.id = 'imag7'
       this.wdow.id = 'wdow7'
-      this.irig.id = 'irig7'
-      this.ilef.id = 'ilef7'
-      this.insi.id = 'insi7'
       this.imgs.setAttribute('alt', '')
       this.imag.setAttribute('tabindex', '-1')
       this.imag.className = 'hide7'
@@ -62,8 +54,10 @@
     }
 
     loaded (e) {
-      e.onload = e => { e.target.parentElement.className = '' }
-      e.src = e.src
+      e.onload = e => {
+        e.target.parentElement.className = ''
+      }
+      e.src = e.src // force browser to repaint loaders and images reload
     }
 
     autoPlay () {
@@ -89,16 +83,18 @@
         }
         delay()
       }
+      this.setActiveClass.call(this.play)
     }
 
     clear () {
       clearTimeout(this.tim)
       this.tim = 0
       this.isAutoplayOn = false
-      this.play.className = ''
+      this.play.classList.remove('acts7')
     }
 
     downloads () {
+      this.setActiveClass.call(this.down)
       const a = d.createElement('a')
       a.setAttribute('rel', 'noopener noreferrer')
       a.target = '_blank'
@@ -112,11 +108,13 @@
     lefts () {
       if (this.indexOfImage === 0) this.indexOfImage = this.imagesArray.length
       this.indexOfImage--
+      this.setActiveClass.call(this.ilef)
     }
 
     right () {
       if (this.indexOfImage === this.imagesArray.length - 1) this.indexOfImage = -1
       this.indexOfImage++
+      this.setActiveClass.call(this.irig)
     }
 
     close () {
@@ -126,17 +124,35 @@
       d.body.style.overflowY = 'visible'
     }
 
+    setActiveClass () {
+      this.className += ' focu7'
+      setTimeout(() => { this.classList.remove('focu7') }, 100)
+    }
+
     show () {
+      // if null is set as index return false
+      if (this.indexOfImage === null) return false
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = ''
         d.body.style.overflowY = 'hidden'
         this.imag.focus()
       }
+      const imageSrc = this.imagesArray[this.indexOfImage].src
       this.insi.className = 'spin7'
-      this.alts.innerText = this.imagesArray[this.indexOfImage].src.slice(this.imagesArray[this.indexOfImage].src.lastIndexOf('/') + 1)
+      this.alts.innerText = imageSrc.slice(imageSrc.lastIndexOf('/') + 1)
       this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.imagesArray.length
-      this.imgs.src = this.imagesArray[this.indexOfImage].src
+
+      // if svg load svg
+      if (imageSrc.substr(imageSrc.length - 3) === 'svg') {
+        this.imgs.src = imageSrc
+      } else {
+      // chech is there a biger resolution image in 'big' folder
+        this.imgs.src = imageSrc.substring(0, imageSrc.lastIndexOf('/') + 1) + 'big' + imageSrc.slice(imageSrc.lastIndexOf('/'))
+      }
+
+      // set default src if only one image
+      this.imgs.onerror = () => { this.imgs.src = imageSrc }
       this.loaded(this.imgs)
     }
   }
@@ -162,21 +178,23 @@
       images.imagesArray.pop() // remove last element from array if body is selected
       d.addEventListener('click', listenForImages)
     } else {
-      images.imagesContainersArray.forEach(e => e.addEventListener('click', listenForImages))
+      for (let i = images.imagesContainersArray.length - 1; i >= 0; i--) {
+        images.imagesContainersArray[i].addEventListener('click', listenForImages)
+      }
     }
 
     function listenForImages (e) {
       if (e.target.tagName === 'IMG') {
         e.preventDefault() // prevent for default browser actions
         e.stopPropagation()
-        images.indexOfImage = images.imagesArray.indexOf(e.target) ? images.imagesArray.indexOf(e.target) : 0 // set image index on click
+        images.indexOfImage = images.imagesArray.indexOf(e.target) === -1 ? null : images.imagesArray.indexOf(e.target) // set image index on click
         images.show()
       }
     }
 
     function controls (e) {
-      e.stopPropagation()
       e.preventDefault() // prevent for default browser actions
+      e.stopPropagation()
       switch (e.target.id) {
         case 'rigt7':
           images.clear()
