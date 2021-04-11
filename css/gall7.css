@@ -20,6 +20,7 @@ body {
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
+  min-width: 144px;
 }
 
 .hide7 {
@@ -55,7 +56,36 @@ body {
   box-sizing: border-box;
   cursor: pointer;
   position: absolute;
-  opacity: 0.7;
+}
+
+#clos7,
+#play7,
+#wdow7,
+#ilef7,
+#irig7 {
+  opacity: .7;
+}
+
+.focu7,
+#wdow7:active,
+#down7:active,
+#play7:active,
+#clos7:active,
+#left7:active #ilef7,
+#rigt7:active #irig7 {
+  opacity: .3 !important;
+}
+
+#left7:hover,
+#rigt7:hover,
+#play7.acts7,
+#wdow7:hover,
+#play7:hover,
+#clos7:hover,
+#left7:hover #ilef7,
+#rigt7:hover #irig7 {
+  opacity: 1;
+  background: rgba(160, 160, 160, 0.1);
 }
 
 #left7,
@@ -102,31 +132,12 @@ body {
 #wdow7,
 #rigt7 {
   right: 0;
+  top: 0;
 }
 
 #clos7 {
   top: 24px;
   z-index: 7;
-}
-
-#play7.acts7,
-#wdow7:hover,
-#down7:hover,
-#play7:hover,
-#clos7:hover,
-#left7:hover #ilef7,
-#rigt7:hover #irig7 {
-  opacity: 1;
-  background: rgba(160, 160, 160, 0.1);
-}
-
-#wdow7:active,
-#down7:active,
-#play7:active,
-#clos7:active,
-#left7:active,
-#rigt7:active {
-  opacity: .5;
 }
 
 #ilef7::after,
@@ -197,7 +208,6 @@ body {
 #cent7 {
   position: absolute;
   top: 0;
-  user-select: none;
   width: 100%;
   overscroll-behavior: contain;
   overflow: hidden;
@@ -223,10 +233,7 @@ body {
 }
 
 #insi7 img {
-  background: #111;
-  background: linear-gradient(90deg, #555 7px, #777 7px) 0 0/14px 1px, linear-gradient(#555 7px, #777 7px) 0 0/ 1px 14px;
   position: relative;
-  background-blend-mode: difference;
   max-height: 100%;
   max-width: 100%;
   top: 50%;
@@ -235,6 +242,8 @@ body {
 
 #insi7 img[src$=".svg"] {
   height: 100%;
+  background: linear-gradient(90deg,#fff 7px,#000 7px) 0 0/14px 14px, linear-gradient(#fff 7px,#000 7px) 0 0/ 14px 14px #777;
+  background-blend-mode: exclusion;
 }
 
 #down7 {

@@ -138,6 +138,10 @@
         d.body.style.overflowY = 'hidden'
         this.imag.focus()
       }
+      // two lines below for hiding left right buttons
+      this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
+      this.rigt.className = this.indexOfImage === this.imagesArray.length - 1 ? 'hide7' : ''
+
       const imageSrc = this.imagesArray[this.indexOfImage].src
       this.insi.className = 'spin7'
       this.alts.innerText = imageSrc.slice(imageSrc.lastIndexOf('/') + 1)
