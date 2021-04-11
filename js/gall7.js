@@ -54,36 +54,34 @@
     }
 
     loaded (e) {
-      e.onload = e => {
-        e.target.parentElement.className = ''
-      }
+      e.onload = e => { e.target.parentElement.className = '' }
       e.src = e.src // force browser to repaint loaders and images reload
     }
 
     autoPlay () {
-      if (!this.isActive) return false
-      if (this.isAutoplayOn) {
-        this.clear()
-      } else {
-        this.play.className = 'acts7'
-        this.isAutoplayOn = true
-
-        const delay = () => {
-          this.right()
-          this.show()
-          this.tim = setTimeout(() => {
-            clearTimeout(this.tim)
-            this.tim = 0
-            if (this.indexOfImage === this.imagesArray.length - 1 && this.isAutoplayOn) {
-              this.clear()
-            } else {
-              delay()
-            }
-          }, 1500)
+      if (this.isActive) {
+        if (this.isAutoplayOn) {
+          this.clear()
+        } else {
+          this.play.className = 'acts7'
+          this.isAutoplayOn = true
+          const delay = () => {
+            this.right()
+            this.show()
+            this.tim = setTimeout(() => {
+              clearTimeout(this.tim)
+              this.tim = 0
+              if (this.indexOfImage === this.imagesArray.length - 1 && this.isAutoplayOn) {
+                this.clear()
+              } else {
+                delay()
+              }
+            }, 1500)
+          }
+          delay()
         }
-        delay()
+        this.setActiveClass.call(this.play)
       }
-      this.setActiveClass.call(this.play)
     }
 
     clear () {
@@ -126,18 +124,23 @@
 
     setActiveClass () {
       this.className += ' focu7'
-      setTimeout(() => { this.classList.remove('focu7') }, 100)
+      setTimeout(() => {
+        this.classList.remove('focu7')
+      }, 100)
     }
 
     show () {
       // if null is set as index return false
       if (this.indexOfImage === null) return false
+
+      // don't rewrite values if active and set active gallery
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = ''
         d.body.style.overflowY = 'hidden'
         this.imag.focus()
       }
+
       // two lines below for hiding left right buttons
       this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
       this.rigt.className = this.indexOfImage === this.imagesArray.length - 1 ? 'hide7' : ''
@@ -151,7 +154,7 @@
       if (imageSrc.substr(imageSrc.length - 3) === 'svg') {
         this.imgs.src = imageSrc
       } else {
-      // chech is there a biger resolution image in 'big' folder
+        // chech is there a biger resolution image in 'big' folder
         this.imgs.src = imageSrc.substring(0, imageSrc.lastIndexOf('/') + 1) + 'big' + imageSrc.slice(imageSrc.lastIndexOf('/'))
       }
 
@@ -196,7 +199,7 @@
       }
     }
 
-    function controls (e) {
+    images.imag.addEventListener('click', (e) => {
       e.preventDefault() // prevent for default browser actions
       e.stopPropagation()
       switch (e.target.id) {
@@ -224,9 +227,8 @@
           return false
       }
       return false
-    }
+    })
 
-    images.imag.addEventListener('click', controls, true)
     w.addEventListener('keyup', (e) => {
       if (!images.isActive || e.isComposing || e.key === 229) return false
       e.preventDefault()
