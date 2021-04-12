@@ -22,6 +22,7 @@ body {
   white-space: nowrap;
   min-width: 168px;
   min-height: 168px;
+  outline: 0;
 }
 
 .hide7 {
@@ -91,8 +92,8 @@ body {
 
 #left7,
 #rigt7 {
-  width: 30%;
-  min-width: 80px;
+  width: 16%;
+  min-width: 72px;
   height: 100%;
   background: none;
   z-index: 3;
@@ -242,7 +243,7 @@ body {
 }
 
 #insi7 img[src$=".svg"] {
-  background: linear-gradient(90deg,#fff 7px,#000 7px) 0 0/14px 14px, linear-gradient(#fff 7px,#000 7px) 0 0/ 14px 14px #777;
+  background: linear-gradient(90deg, #fff 7px, #000 7px) 0 0/14px 14px, linear-gradient(#fff 7px, #000 7px) 0 0/ 14px 14px #777;
   background-blend-mode: exclusion;
 }
 
