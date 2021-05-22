@@ -54,17 +54,27 @@
     CreateUI.imgs.src = 'data:,'
     d.body.appendChild(CreateUI.frag)
 
+    CreateUI.autoPlay = function () {
+      if (this.isActive) {
+        if (this.isAutoplayOn) {
+          this.clear()
+        } else {
+          this.play.className = 'acts7'
+          this.isAutoplayOn = true
+          this.setActiveClass.call(this.play)
+          this.loaded(this.imgs)
+        }
+      }
+    }
+
     CreateUI.autoplayLoop = function () {
-      clearTimeout(this.tim)
-      this.tim = 0
-      if (this.indexOfImage === this.CreateUIArray.length - 1) {
-        this.indexOfImage = -1
-        this.clear()
-      } else {
+      if (this.indexOfImage <= this.CreateUIArray.length - 1) {
         const that = this
         that.tim = setTimeout(function () {
-          that.right()
-          that.show()
+          that.right().show()
+          if (that.indexOfImage === that.CreateUIArray.length - 1) {
+            that.clear()
+          }
         }, 1200)
       }
     }
@@ -81,24 +91,13 @@
       e.src = img.src
     }
 
-    CreateUI.autoPlay = function () {
-      if (this.isActive) {
-        if (this.indexOfImage === this.CreateUIArray.length - 1) {
-          this.indexOfImage = -1
-        }
-        this.play.className = 'acts7'
-        this.isAutoplayOn = true
-        this.setActiveClass.call(this.play)
-        this.loaded(this.imgs)
-      }
-    }
-
     CreateUI.clear = function () {
       clearTimeout(this.tim)
       this.tim = 0
       this.isAutoplayOn = false
       this.isLoadedImage = false
       this.play.classList.remove('acts7')
+      return this
     }
 
     CreateUI.downloads = function () {
@@ -114,15 +113,17 @@
     }
 
     CreateUI.lefts = function () {
-      if (this.indexOfImage === 0) this.indexOfImage = this.CreateUIArray.length
-      this.indexOfImage--
+      if (this.indexOfImage > 0) this.indexOfImage--
+      else this.indexOfImage = this.CreateUIArray.length - 1
       this.setActiveClass.call(this.ilef)
+      return this
     }
 
     CreateUI.right = function () {
-      if (this.indexOfImage === this.CreateUIArray.length - 1) this.indexOfImage = -1
-      this.indexOfImage++
+      if (this.indexOfImage < this.CreateUIArray.length - 1) this.indexOfImage++
+      else this.indexOfImage = 0
       this.setActiveClass.call(this.irig)
+      return this
     }
 
     CreateUI.close = function () {
@@ -141,7 +142,7 @@
     }
 
     CreateUI.show = function () {
-    // if null is set as index return false
+      // if null is set as index return false
       if (this.indexOfImage === null) return false
 
       // don't rewrite values if active and set active gallery
@@ -166,7 +167,7 @@
       if (image.src.substr(image.src.length - 3) === 'svg') {
         imageSrc = image.src
       } else {
-      // chech is there a biger resolution image in 'big' folder
+        // chech is there a biger resolution image in 'big' folder
         imageSrc = image.src.substring(0, image.src.lastIndexOf('/') + 1) + 'big' + image.src.slice(image.src.lastIndexOf('/'))
       }
       this.imgs.onerror = function (e) {
@@ -174,6 +175,7 @@
       }
       this.imgs.src = imageSrc
     }
+
     CreateUI.container = d.getElementsByClassName('CreateUI-container')[0] ? d.getElementsByClassName('CreateUI-container') : [d.body] // check and set any container default = body
     for (let i = CreateUI.container.length - 1; i >= 0; i--) {
       CreateUI.CreateUIContainersArray.push(CreateUI.container[i])
@@ -188,6 +190,15 @@
       }
     }
 
+    const listenForCreateUI = e => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        CreateUI.indexOfImage = CreateUI.CreateUIArray.indexOf(e.target) === -1 ? null : CreateUI.CreateUIArray.indexOf(e.target) // set image index on click
+        CreateUI.show()
+      }
+    }
+
     if (CreateUI.CreateUIContainersArray[0].tagName === 'BODY') {
       CreateUI.CreateUIArray.pop() // remove last element from array if body is selected
       d.addEventListener('click', listenForCreateUI)
@@ -197,60 +208,28 @@
       }
     }
 
-    function listenForCreateUI (e) {
-      if (e.target.tagName === 'IMG') {
-        e.preventDefault() // prevent for default browser actions
-        e.stopPropagation()
-        CreateUI.indexOfImage = CreateUI.CreateUIArray.indexOf(e.target) === -1 ? null : CreateUI.CreateUIArray.indexOf(e.target) // set image index on click
-        CreateUI.show()
-      }
-    }
-
     CreateUI.imag.addEventListener('click', function (e) {
-      e.preventDefault() // prevent for default browser actions
-      switch (e.target.id) {
-        case 'rigt7':
-          CreateUI.clear()
-          CreateUI.right()
-          CreateUI.show()
-          break
-        case 'left7':
-          CreateUI.clear()
-          CreateUI.lefts()
-          CreateUI.show()
-          break
-        case 'play7':
-          CreateUI.autoPlay()
-          break
-        case 'wdow7':
-          if (CreateUI.CreateUIArray[CreateUI.indexOfImage].src === CreateUI.onow.dataset.selected) return
-          CreateUI.downloads()
-          break
-        case 'clos7':
-          CreateUI.close()
-          break
-        default:
-          return false
+      e.preventDefault()
+      e.stopImmediatePropagation()
+      e.target.id === 'rigt7' && CreateUI.clear().right().show()
+      e.target.id === 'left7' && CreateUI.clear().lefts().show()
+      e.target.id === 'play7' && CreateUI.autoPlay()
+      e.target.id === 'clos7' && CreateUI.close()
+      if (e.target.id === 'wdow7') {
+        if (CreateUI.CreateUIArray[CreateUI.indexOfImage].src === CreateUI.onow.dataset.selected) return
+        CreateUI.clear().downloads()
       }
       return false
     })
 
     w.addEventListener('keyup', function (e) {
       if (!CreateUI.isActive || e.isComposing || e.key === 229) return false
-      if (e.key === 'ArrowLeft') {
-        CreateUI.clear()
-        CreateUI.lefts()
-        CreateUI.show()
-      }
-      if (e.key === 'ArrowRight') {
-        CreateUI.clear()
-        CreateUI.right()
-        CreateUI.show()
-      }
-      if (e.key === 'Escape') CreateUI.close()
+      e.key === 'ArrowLeft' && CreateUI.clear().lefts().show()
+      e.key === 'ArrowRight' && CreateUI.clear().right().show()
+      e.key === 'Escape' && CreateUI.close()
       e.key === ' ' && CreateUI.autoPlay()
       e.preventDefault()
       e.stopImmediatePropagation()
-    }, true)
+    })
   })
 })(window, document)
