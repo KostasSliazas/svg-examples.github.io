@@ -3,33 +3,31 @@
 
   d.addEventListener('DOMContentLoaded', function () {
     const CreateUI = Object.create(null)
-    CreateUI.tim = 0
-    CreateUI.CreateUIContainersArray = [] // get all CreateUI containers
-
-    CreateUI.CreateUIArray = [] // get all CreateUI
-
+    CreateUI.createUIContainersArray = [] // get all CreateUI containers
+    CreateUI.createUIArray = [] // get all CreateUI
     CreateUI.container = null
-    CreateUI.indexOfImage = 0
     CreateUI.isActive = false
     CreateUI.isAutoplayOn = false
+    CreateUI.indexOfImage = 0
+    CreateUI.tim = 0
     CreateUI.frag = d.createDocumentFragment()
+    CreateUI.clos = d.createElement('button')
+    CreateUI.ilef = d.createElement('button')
+    CreateUI.irig = d.createElement('button')
+    CreateUI.wdow = d.createElement('button')
     CreateUI.imag = d.createElement('div')
     CreateUI.cent = d.createElement('div')
     CreateUI.left = d.createElement('div')
     CreateUI.rigt = d.createElement('div')
-    CreateUI.clos = d.createElement('button')
     CreateUI.foot = d.createElement('div')
     CreateUI.alts = d.createElement('div')
     CreateUI.play = d.createElement('div')
-    CreateUI.down = d.createElement('span')
     CreateUI.onow = d.createElement('div')
-    CreateUI.imgs = new w.Image()
     CreateUI.fine = d.createElement('div')
-    CreateUI.wdow = d.createElement('button')
-    CreateUI.ilef = d.createElement('button')
-    CreateUI.irig = d.createElement('button')
     CreateUI.head = d.createElement('div')
     CreateUI.insi = d.createElement('div')
+    CreateUI.imgs = d.createElement('img')
+    CreateUI.down = d.createElement('span')
     CreateUI.imag.appendChild(CreateUI.head).id = 'head7'
     CreateUI.imag.appendChild(CreateUI.clos).id = 'clos7'
     CreateUI.imag.appendChild(CreateUI.cent).id = 'cent7'
@@ -69,29 +67,21 @@
     }
 
     CreateUI.autoplayLoop = function () {
-      if (this.indexOfImage <= this.CreateUIArray.length - 1) {
-        const that = this
-        that.tim = setTimeout(function () {
-          that.right().show()
-
-          if (that.indexOfImage === that.CreateUIArray.length - 1) {
-            that.clear()
-          }
-        }, 1200)
-      }
+      this.tim = setTimeout(function () {
+        this.right().show()
+        if (this.indexOfImage === this.createUIArray.length - 1) {
+          this.clear()
+        }
+      }.bind(this), 1300)
     }
 
     CreateUI.loaded = function (e) {
-      const that = this
-
       e.onload = function (e) {
         e.target.parentElement.className = ''
-
-        if (that.isAutoplayOn) {
-          that.autoplayLoop()
+        if (this.isAutoplayOn) {
+          this.autoplayLoop()
         }
-      }
-
+      }.bind(this)
       const img = e
       e.src = img.src
     }
@@ -110,21 +100,23 @@
       const a = d.createElement('a')
       a.setAttribute('rel', 'noopener noreferrer')
       a.target = '_blank'
-      a.href = this.CreateUIArray[this.indexOfImage].src
-      a.download = this.CreateUIArray[this.indexOfImage].src.split('/').pop()
+      a.href = this.imgs.src
+      a.setAttribute('download', this.imgs.src)
       a.click()
       a.remove()
-      this.onow.dataset.selected = this.CreateUIArray[this.indexOfImage].src
+      this.onow.dataset.selected = this.imgs.src
     }
 
     CreateUI.lefts = function () {
-      if (this.indexOfImage > 0) this.indexOfImage--; else this.indexOfImage = this.CreateUIArray.length - 1
+      if (this.indexOfImage > 0) this.indexOfImage--
+      else this.indexOfImage = this.createUIArray.length - 1
       this.setActiveClass.call(this.ilef)
       return this
     }
 
     CreateUI.right = function () {
-      if (this.indexOfImage < this.CreateUIArray.length - 1) this.indexOfImage++; else this.indexOfImage = 0
+      if (this.indexOfImage < this.createUIArray.length - 1) this.indexOfImage++
+      else this.indexOfImage = 0
       this.setActiveClass.call(this.irig)
       return this
     }
@@ -137,17 +129,17 @@
     }
 
     CreateUI.setActiveClass = function () {
-      const that = this
-      this.className += ' focu7'
+      this.classList.add('focu7')
       setTimeout(function () {
-        that.classList.remove('focu7')
-      }, 100)
+        this.classList.remove('focu7')
+      }.bind(this), 150)
     }
 
     CreateUI.show = function () {
       // if null is set as index return false
-      if (this.indexOfImage === null) return false // don't rewrite values if active and set active gallery
+      if (this.indexOfImage === null) return false
 
+      // don't rewrite values if active and set active gallery
       if (!this.isActive) {
         this.isActive = true
         this.imag.className = ''
@@ -155,42 +147,29 @@
         this.imag.focus()
       }
 
-      const image = this.CreateUIArray[this.indexOfImage] // two lines below for hiding left right buttons
-
+      const image = this.createUIArray[this.indexOfImage]
+      // two lines below for hiding left right buttons
       this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
-      this.rigt.className = this.indexOfImage === this.CreateUIArray.length - 1 ? 'hide7' : ''
+      this.rigt.className = this.indexOfImage === this.createUIArray.length - 1 ? 'hide7' : ''
       this.insi.className = 'spin7'
       this.alts.innerText = image.src.slice(image.src.lastIndexOf('/') + 1)
-      this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.CreateUIArray.length
-      let imageSrc // if svg load svg
-
-      if (image.src.substr(image.src.length - 3) === 'svg') {
-        imageSrc = image.src
-      } else {
-        // chech is there a biger resolution image in 'big' folder
-        imageSrc = image.src.substring(0, image.src.lastIndexOf('/') + 1) + 'big' + image.src.slice(image.src.lastIndexOf('/'))
-      }
-
-      this.imgs.onerror = function (e) {
-        e.target.src = image.src
-      }
-
-      this.imgs.src = imageSrc
+      this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.createUIArray.length
+      this.imgs.onerror = function (e) { e.target.src = image.src }
+      this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.substring(0, image.src.lastIndexOf('/') + 1) + 'big' + image.src.slice(image.src.lastIndexOf('/'))
     }
 
     CreateUI.container = d.getElementsByClassName('CreateUI-container')[0] ? d.getElementsByClassName('CreateUI-container') : [d.body] // check and set any container default = body
 
-    for (let i = CreateUI.container.length - 1; i >= 0; i--) {
-      CreateUI.CreateUIContainersArray.push(CreateUI.container[i])
+    for (let l = CreateUI.container.length - 1; l >= 0; l--) {
+      CreateUI.createUIContainersArray.push(CreateUI.container[l])
     }
 
-    for (let _i = CreateUI.CreateUIContainersArray.length - 1; _i >= 0; _i--) {
-      const img = CreateUI.CreateUIContainersArray[_i].getElementsByTagName('img')
-
+    for (let i = CreateUI.createUIContainersArray.length - 1; i >= 0; i--) {
+      const img = CreateUI.createUIContainersArray[i].getElementsByTagName('img')
       for (let j = 0; j < img.length; j++) {
         img[j].parentElement.className = 'spin7'
         CreateUI.loaded(img[j])
-        CreateUI.CreateUIArray.push(img[j])
+        CreateUI.createUIArray.push(img[j])
       }
     }
 
@@ -198,37 +177,33 @@
       if (e.target.tagName === 'IMG') {
         e.preventDefault()
         e.stopImmediatePropagation()
-        CreateUI.indexOfImage = CreateUI.CreateUIArray.indexOf(e.target) === -1 ? null : CreateUI.CreateUIArray.indexOf(e.target) // set image index on click
-
+        CreateUI.indexOfImage = CreateUI.createUIArray.indexOf(e.target) === -1 ? null : CreateUI.createUIArray.indexOf(e.target) // set image index on click
         CreateUI.show()
       }
     }
 
-    if (CreateUI.CreateUIContainersArray[0].tagName === 'BODY') {
-      CreateUI.CreateUIArray.pop() // remove last element from array if body is selected
-
+    if (CreateUI.createUIContainersArray[0].tagName === 'BODY') {
+      CreateUI.createUIArray.pop() // remove last element from array if body is selected
       d.addEventListener('click', listenForCreateUI)
     } else {
-      for (let _i2 = CreateUI.CreateUIContainersArray.length - 1; _i2 >= 0; _i2--) {
-        CreateUI.CreateUIContainersArray[_i2].addEventListener('click', listenForCreateUI)
+      for (let k = CreateUI.createUIContainersArray.length - 1; k >= 0; k--) {
+        CreateUI.createUIContainersArray[k].addEventListener('click', listenForCreateUI)
       }
     }
 
     CreateUI.imag.addEventListener('click', function (e) {
-      e.preventDefault()
-      e.stopImmediatePropagation()
+      if (e.target.id === 'wdow7') {
+        if (CreateUI.createUIArray[CreateUI.indexOfImage].src === CreateUI.onow.dataset.selected) return
+        CreateUI.clear().downloads()
+      }
       e.target.id === 'rigt7' && CreateUI.clear().right().show()
       e.target.id === 'left7' && CreateUI.clear().lefts().show()
       e.target.id === 'play7' && CreateUI.autoPlay()
       e.target.id === 'clos7' && CreateUI.close()
-
-      if (e.target.id === 'wdow7') {
-        if (CreateUI.CreateUIArray[CreateUI.indexOfImage].src === CreateUI.onow.dataset.selected) return
-        CreateUI.clear().downloads()
-      }
-
-      return false
+      e.preventDefault()
+      e.stopImmediatePropagation()
     })
+
     w.addEventListener('keyup', function (e) {
       if (!CreateUI.isActive || e.isComposing || e.key === 229) return false
       e.key === 'ArrowLeft' && CreateUI.clear().lefts().show()
