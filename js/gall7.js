@@ -31,11 +31,17 @@
   CreateUI.imag.appendChild(CreateUI.cent).id = 'cent7'
   CreateUI.onow.appendChild(CreateUI.alts).id = 'alts7'
   CreateUI.frag.appendChild(CreateUI.imag).id = 'imag7'
-  CreateUI.cent.appendChild(CreateUI.rigt).appendChild(CreateUI.irig).id = 'irig7'
+  CreateUI.cent.appendChild(CreateUI.rigt).appendChild(CreateUI.irig).id =
+    'irig7'
   CreateUI.cent.appendChild(CreateUI.insi).appendChild(CreateUI.imgs)
-  CreateUI.cent.appendChild(CreateUI.left).appendChild(CreateUI.ilef).id = 'ilef7'
-  CreateUI.imag.appendChild(CreateUI.foot).appendChild(CreateUI.play).id = 'play7'
-  CreateUI.imag.appendChild(CreateUI.onow).appendChild(CreateUI.wdow).appendChild(CreateUI.down)
+  CreateUI.cent.appendChild(CreateUI.left).appendChild(CreateUI.ilef).id =
+    'ilef7'
+  CreateUI.imag.appendChild(CreateUI.foot).appendChild(CreateUI.play).id =
+    'play7'
+  CreateUI.imag
+    .appendChild(CreateUI.onow)
+    .appendChild(CreateUI.wdow)
+    .appendChild(CreateUI.down)
   CreateUI.foot.appendChild(CreateUI.fine)
   CreateUI.foot.id = 'foot7'
   CreateUI.rigt.id = 'rigt7'
@@ -154,7 +160,9 @@
     this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.substring(0, image.src.lastIndexOf('/') + 1) + 'big' + image.src.slice(image.src.lastIndexOf('/'))
   }
 
-  CreateUI.container = d.getElementsByClassName('images-container')[0] ? d.getElementsByClassName('images-container') : d.getElementsByTagName('body') // check and set any container default = body
+  CreateUI.container = d.getElementsByClassName('images-container')[0]
+    ? d.getElementsByClassName('images-container')
+    : d.getElementsByTagName('body') // check and set any container default = body
   for (let l = CreateUI.container.length - 1; l >= 0; l--) {
     CreateUI.createUIContainersArray.push(CreateUI.container[l])
   }
@@ -181,15 +189,13 @@
     CreateUI.createUIArray.pop() // remove last element from array if body is selected
     d.body.addEventListener('click', listenForCreateUI)
   } else {
-    for (let k = CreateUI.createUIContainersArray.length - 1; k >= 0; k--) {
-      CreateUI.createUIContainersArray[k].addEventListener('click', listenForCreateUI)
-    }
+    for (let k = CreateUI.createUIContainersArray.length - 1; k >= 0; k--) { CreateUI.createUIContainersArray[k].addEventListener('click', listenForCreateUI) }
   }
 
   CreateUI.imag.addEventListener('click', function (e) {
     if (!CreateUI.isActive) return false
     if (e.target.id === 'wdow7') {
-      if (CreateUI.createUIArray[CreateUI.indexOfImage].src === CreateUI.onow.dataset.selected) return
+      if (CreateUI.createUIArray[CreateUI.indexOfImage].src === CreateUI.onow.dataset.selected) return false
       CreateUI.clear().downloads()
     }
     e.target.id === 'rigt7' && CreateUI.clear().right().show()
