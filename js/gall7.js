@@ -1,13 +1,17 @@
 (function (w, d) {
   'use strict'
   const CreateUI = Object.create(null)
-  CreateUI.createUIContainersArray = [] // get all CreateUI containers
-  CreateUI.createUIArray = [] // get all CreateUI
+  // create all elements containers array
+  CreateUI.createUIContainersArray = []
+  // create all elements array
+  CreateUI.createUIArray = []
+  // initialize container with null value
   CreateUI.container = null
+  CreateUI.indexOfImage = 0
   CreateUI.isActive = false
   CreateUI.isAutoplayOn = false
-  CreateUI.indexOfImage = 0
-  CreateUI.tim = 0
+  CreateUI.timeOutVar = 0
+  // all stuff for creating main gallery window
   CreateUI.frag = d.createDocumentFragment()
   CreateUI.clos = d.createElement('button')
   CreateUI.ilef = d.createElement('button')
@@ -31,17 +35,11 @@
   CreateUI.imag.appendChild(CreateUI.cent).id = 'cent7'
   CreateUI.onow.appendChild(CreateUI.alts).id = 'alts7'
   CreateUI.frag.appendChild(CreateUI.imag).id = 'imag7'
-  CreateUI.cent.appendChild(CreateUI.rigt).appendChild(CreateUI.irig).id =
-    'irig7'
+  CreateUI.cent.appendChild(CreateUI.rigt).appendChild(CreateUI.irig).id = 'irig7'
   CreateUI.cent.appendChild(CreateUI.insi).appendChild(CreateUI.imgs)
-  CreateUI.cent.appendChild(CreateUI.left).appendChild(CreateUI.ilef).id =
-    'ilef7'
-  CreateUI.imag.appendChild(CreateUI.foot).appendChild(CreateUI.play).id =
-    'play7'
-  CreateUI.imag
-    .appendChild(CreateUI.onow)
-    .appendChild(CreateUI.wdow)
-    .appendChild(CreateUI.down)
+  CreateUI.cent.appendChild(CreateUI.left).appendChild(CreateUI.ilef).id = 'ilef7'
+  CreateUI.imag.appendChild(CreateUI.foot).appendChild(CreateUI.play).id = 'play7'
+  CreateUI.imag.appendChild(CreateUI.onow).appendChild(CreateUI.wdow).appendChild(CreateUI.down)
   CreateUI.foot.appendChild(CreateUI.fine)
   CreateUI.foot.id = 'foot7'
   CreateUI.rigt.id = 'rigt7'
@@ -54,10 +52,12 @@
   CreateUI.imgs.setAttribute('alt', '')
   CreateUI.imag.setAttribute('tabindex', '-1')
   CreateUI.imag.className = 'hide7'
+  // create empty image source
   CreateUI.imgs.src = 'data:,'
-
+  // append document fragment to BODY
   d.body.appendChild(CreateUI.frag)
 
+  // autoplay method
   CreateUI.autoPlay = function () {
     if (this.isAutoplayOn) {
       this.clear()
@@ -69,35 +69,36 @@
     }
   }
 
+  // autoplay method loop
   CreateUI.autoPlayLoop = function () {
-    this.tim = setTimeout(function () {
+    this.timeOutVar = setTimeout(function () {
       this.right().show()
       if (this.indexOfImage === this.createUIArray.length - 1) this.clear()
     }.bind(this), 1300)
   }
 
-  function loadComplete () {
-    this.parentElement.className = ''
-    CreateUI.isAutoplayOn && CreateUI.autoPlayLoop()
-  }
-
+  // image is loaded method
   CreateUI.loaded = function () {
     this.onload = loadComplete.bind(this)
     const img = this
     this.src = img.src
   }
+  // call method on image element
   CreateUI.loaded.call(CreateUI.imgs)
 
+  // clear method to reset all values
   CreateUI.clear = function () {
-    clearTimeout(this.tim)
-    this.tim = 0
+    clearTimeout(this.timeOutVar)
+    this.timeOutVar = 0
     this.isAutoplayOn = false
     this.isLoadedImage = false
     this.play.classList.remove('acts7')
     return this
   }
 
+  // downloads method
   CreateUI.downloads = function () {
+    // add class active for button animation
     this.setActiveClass.call(this.down)
     const a = d.createElement('a')
     a.setAttribute('rel', 'noopener noreferrer')
@@ -109,6 +110,7 @@
     this.onow.dataset.selected = this.imgs.src
   }
 
+  // to left button method loop from images index
   CreateUI.lefts = function () {
     if (this.indexOfImage > 0) this.indexOfImage--
     else this.indexOfImage = this.createUIArray.length - 1
@@ -116,6 +118,7 @@
     return this
   }
 
+  // to right button method loop from images index
   CreateUI.right = function () {
     if (this.indexOfImage < this.createUIArray.length - 1) this.indexOfImage++
     else this.indexOfImage = 0
@@ -131,6 +134,7 @@
     d.body.style.overflowY = 'visible'
   }
 
+  // add class for button animation (when clicked)
   CreateUI.setActiveClass = function () {
     this.classList.add('focu7')
     setTimeout(function () {
@@ -138,12 +142,12 @@
     }.bind(this), 150)
   }
 
+  // show image method to show image when loaded
   CreateUI.show = function () {
     // if null is set as index return false
     if (this.indexOfImage === null) return false
     this.insi.className = 'spin7'
     const image = this.createUIArray[this.indexOfImage]
-
     // don't rewrite values if active and set active gallery
     if (!this.isActive) {
       this.isActive = true
@@ -154,28 +158,31 @@
     // two lines below for hiding left right buttons
     this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
     this.rigt.className = this.indexOfImage === this.createUIArray.length - 1 ? 'hide7' : ''
-    this.alts.innerText = image.src.slice(image.src.lastIndexOf('/') + 1)
+    this.alts.innerText = decodeURI(image.src.slice(image.src.lastIndexOf('/') + 1))
     this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.createUIArray.length
     this.imgs.onerror = function (e) { e.target.src = image.src }
     this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.substring(0, image.src.lastIndexOf('/') + 1) + 'big' + image.src.slice(image.src.lastIndexOf('/'))
   }
 
+  // asign container elements or BODY (default = BODY)
   CreateUI.container = d.getElementsByClassName('images-container')[0]
     ? d.getElementsByClassName('images-container')
-    : d.getElementsByTagName('body') // check and set any container default = body
+    : d.getElementsByTagName('body')
   for (let l = CreateUI.container.length - 1; l >= 0; l--) {
     CreateUI.createUIContainersArray.push(CreateUI.container[l])
   }
 
+  // Loop from elements
   for (let i = CreateUI.createUIContainersArray.length - 1; i >= 0; i--) {
     const img = CreateUI.createUIContainersArray[i].getElementsByTagName('img')
     for (let j = 0; j < img.length; j++) {
-      img[j].parentElement.className = 'spin7'
+      img[j].parentElement.classList.add('spin7')
       CreateUI.loaded.call(img[j])
       CreateUI.createUIArray.push(img[j])
     }
   }
 
+  // listen for clicked on image element and load show method
   const listenForCreateUI = function listenForCreateUI (e) {
     if (e.target.tagName === 'IMG') {
       e.preventDefault()
@@ -186,12 +193,20 @@
   }
 
   if (CreateUI.createUIContainersArray[0] && CreateUI.createUIContainersArray[0].tagName === 'BODY') {
-    CreateUI.createUIArray.pop() // remove last element from array if body is selected
+    // remove last element from array if body is selected
+    CreateUI.createUIArray.pop()
     d.body.addEventListener('click', listenForCreateUI)
   } else {
     for (let k = CreateUI.createUIContainersArray.length - 1; k >= 0; k--) { CreateUI.createUIContainersArray[k].addEventListener('click', listenForCreateUI) }
   }
 
+  // autoplay and image loaded helper to remove class 'loader'
+  function loadComplete () {
+    this.parentElement.classList.remove('spin7')
+    CreateUI.isAutoplayOn && CreateUI.autoPlayLoop()
+  }
+
+  // add click addEventListener to image div (gallery window)
   CreateUI.imag.addEventListener('click', function (e) {
     if (!CreateUI.isActive) return false
     if (e.target.id === 'wdow7') {
@@ -206,6 +221,7 @@
     e.stopImmediatePropagation()
   })
 
+  // add keyup addEventListener to image div (gallery window)
   w.addEventListener('keyup', function (e) {
     if (!CreateUI.isActive || e.isComposing || e.key === 229) return false
     e.key === 'ArrowLeft' && CreateUI.clear().lefts().show()
@@ -215,4 +231,37 @@
     e.preventDefault()
     e.stopImmediatePropagation()
   })
+  // everything to handle swipe left/right
+  // https://code-maven.com/swipe-left-right-vanilla-javascript
+  const minHorizontalMove = 30
+  const maxVerticalMove = 30
+  const withinMs = 1000
+
+  let startXPos
+  let startYPos
+  let startTime
+  function touchStart (event) {
+    startXPos = event.touches[0].pageX
+    startYPos = event.touches[0].pageY
+    startTime = new Date()
+  }
+
+  function touchEnd (event) {
+    const endXPos = event.changedTouches[0].pageX
+    const endYPos = event.changedTouches[0].pageY
+    const endTime = new Date()
+    const moveX = endXPos - startXPos
+    const moveY = endYPos - startYPos
+    const elapsedTime = endTime - startTime
+    if (Math.abs(moveX) > minHorizontalMove && Math.abs(moveY) < maxVerticalMove && elapsedTime < withinMs) {
+      if (moveX < 0) {
+        CreateUI.clear().right().show()
+      } else {
+        CreateUI.clear().lefts().show()
+      }
+    }
+  }
+  CreateUI.imag.addEventListener('touchstart', touchStart)
+  CreateUI.imag.addEventListener('touchend', touchEnd)
+  // everything to handle swipe left/right ends
 })(window, document)
