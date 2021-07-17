@@ -48,6 +48,11 @@ body {
   text-overflow: ellipsis;
 }
 
+#stat7,
+#alts7 {
+  line-height: 48px;
+}
+
 #foot7,
 #clos7,
 #play7,
@@ -56,7 +61,6 @@ body {
 #rigt7,
 #wdow7 {
   box-sizing: border-box;
-  cursor: pointer;
   position: absolute;
 }
 
@@ -68,16 +72,18 @@ body {
   opacity: .7;
 }
 
-.focu7,
+#cent7 .focu7,
 #wdow7:active,
 #down7:active,
 #play7:active,
 #clos7:active,
 #left7:active #ilef7,
 #rigt7:active #irig7 {
-  opacity: .3 !important;
+  opacity: .3;
+  outline: 0;
 }
 
+#imag7 button:focus,
 #left7:hover,
 #rigt7:hover,
 #play7.acts7,
@@ -86,8 +92,9 @@ body {
 #clos7:hover,
 #left7:hover #ilef7,
 #rigt7:hover #irig7 {
-  opacity: 1;
-  background: rgba(160, 160, 160, 0.1);
+  background: rgba(77, 77, 77, 0.2);
+  cursor: pointer;
+  outline: 0;
 }
 
 #left7,
@@ -230,7 +237,7 @@ body {
 }
 
 #insi7 {
-  max-width: 80%;
+  /* max-width: 80%; */
   height: 100%;
   margin: 0 auto;
   position: relative;
@@ -246,8 +253,9 @@ body {
 }
 
 #insi7 img[src$=".svg"] {
-  background: linear-gradient(90deg, #fff 7px, #000 7px) 0 0/14px 14px, linear-gradient(#fff 7px, #000 7px) 0 0/ 14px 14px #777;
-  background-blend-mode: exclusion;
+  background: #fafafa;
+  /* background: linear-gradient(90deg, #fff 7px, #000 7px) 0 0/14px 14px, linear-gradient(#fff 7px, #000 7px) 0 0/ 14px 14px #777;
+  background-blend-mode: exclusion; */
 }
 
 #down7 {
@@ -264,6 +272,7 @@ body {
 }
 
 #play7::before {
+  transition: .2s border-radius;
   border-radius: 50%;
   border: 2px solid #fff;
   left: 12px;
@@ -272,8 +281,12 @@ body {
   top: 12px
 }
 
+#play7.acts7::before {
+  border-radius: 4px;
+}
+
 .spin7::after,
-.spin7::before,
+/* .spin7::before, */
 #down7::after,
 #down7::before,
 #play7::before,
@@ -317,24 +330,14 @@ body {
   width: 2px
 }
 
-.spin7::before {
-  background: #000;
-  height: 102%;
-  left: -1%;
-  top: -1%;
-  width: 102%;
-  z-index: 1;
-}
-
-li.spin7::before {
-  background: #eee;
-  z-index: 1;
-}
+/* .spin7 img {
+  display: none;
+} */
 
 .spin7::after {
   animation: load .5s linear infinite;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid #bbb;
   border-bottom: 2px solid transparent;
   border-top: 2px solid transparent;
   box-sizing: border-box;
