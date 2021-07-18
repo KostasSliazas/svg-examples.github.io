@@ -46,8 +46,7 @@ h3 {
 .inside:not(a) {
   font-size: 0
 }
-.noselect,
-img {
+.noselect {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

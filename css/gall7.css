@@ -184,15 +184,15 @@ body {
 }
 
 #ilef7::after {
-  border-left: 2px solid #fff;
-  border-top: 2px solid #fff;
+  border-left: 2px solid #777;
+  border-top: 2px solid #777;
   left: 14px;
 }
 
 #irig7::after {
   right: 14px;
-  border-right: 2px solid #fff;
-  border-top: 2px solid #fff;
+  border-right: 2px solid #777;
+  border-top: 2px solid #777;
 }
 
 #left7:hover #ilef7::after {
@@ -205,7 +205,7 @@ body {
 
 #clos7::after,
 #clos7::before {
-  border-left: 2px solid #fff;
+  border-left: 2px solid #777;
   content: '';
   display: block;
   height: 30px;
@@ -254,13 +254,13 @@ body {
 
 #insi7 img[src$=".svg"] {
   background: #fafafa;
-  /* background: linear-gradient(90deg, #fff 7px, #000 7px) 0 0/14px 14px, linear-gradient(#fff 7px, #000 7px) 0 0/ 14px 14px #777;
+  /* background: linear-gradient(90deg, #777 7px, #000 7px) 0 0/14px 14px, linear-gradient(#777 7px, #000 7px) 0 0/ 14px 14px #777;
   background-blend-mode: exclusion; */
 }
 
 #down7 {
   border-radius: 0 0 2px 2px;
-  border: 2px solid #fff;
+  border: 2px solid #777;
   top: 27px;
   box-sizing: border-box;
   height: 6px;
@@ -274,7 +274,7 @@ body {
 #play7::before {
   transition: .2s border-radius;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid #777;
   left: 12px;
   height: 24px;
   width: 24px;
@@ -298,7 +298,7 @@ body {
 }
 
 #play7::after {
-  border-color: transparent #fff;
+  border-color: transparent #777;
   border-style: solid;
   border-width: 5px 0 5px 12px;
   left: 19px;
@@ -312,8 +312,8 @@ body {
 }
 
 #down7::after {
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
+  border-bottom: 2px solid #777;
+  border-left: 2px solid #777;
   bottom: 3px;
   height: 12px;
   left: 4px;
@@ -322,7 +322,7 @@ body {
 }
 
 #down7::before {
-  background: #fff;
+  background: #777;
   height: 18px;
   left: 9px;
   margin: 0 auto;
