@@ -1,7 +1,7 @@
 (function (w, d) {
   'use strict'
+  // create empty object
   const IG = Object.create(null)
-
   // imageGalleryConfig variables
   const getConfig = typeof w.imageGalleryConfig !== 'undefined' && w.imageGalleryConfig
   IG.folder = typeof getConfig.folder === 'string' ? getConfig.folder : 'big' // default folder 'big'
@@ -12,12 +12,15 @@
   IG.IGContainersArray = []
   // create all elements array
   IG.IGArray = []
+
   // initialize container with null value
   IG.container = null
   IG.indexOfImage = 0
   IG.isActive = false
   IG.isAutoplayOn = false
   IG.timeOutVar = 0
+  IG.isLoadedImage = false
+
   // all stuff for creating main gallery window
   IG.frag = d.createDocumentFragment()
   IG.clos = d.createElement('button')
@@ -29,19 +32,29 @@
   IG.rigt = d.createElement('div')
   IG.head = d.createElement('div')
   IG.insi = d.createElement('div')
-
+  IG.cent.appendChild(IG.insi)
   IG.cent.appendChild(IG.rigt).appendChild(IG.irig).id = 'irig7'
   IG.cent.appendChild(IG.left).appendChild(IG.ilef).id = 'ilef7'
   IG.imag.appendChild(IG.head).appendChild(IG.clos).id = 'clos7'
+  IG.clos.setAttribute('aria-label', 'Close')
+  IG.irig.setAttribute('aria-label', 'Next')
+  IG.ilef.setAttribute('aria-label', 'Previous')
   IG.imag.appendChild(IG.cent).id = 'cent7'
   IG.frag.appendChild(IG.imag).id = 'imag7'
   IG.rigt.id = 'rigt7'
   IG.insi.id = 'insi7'
   IG.left.id = 'left7'
   IG.head.id = 'head7'
+  IG.clos.setAttribute('title', 'Press Esc to close')
+  IG.imag.setAttribute('tabindex', '-1')
+  IG.imag.className = 'hide7'
+
+  // show download and autoplay buttons if (true = default)
   if (IG.showButtons) {
     IG.wdow = d.createElement('button')
     IG.play = d.createElement('button')
+    IG.wdow.setAttribute('aria-label', 'Download')
+    IG.play.setAttribute('aria-label', 'Play')
     IG.foot = d.createElement('div')
     IG.alts = d.createElement('div')
     IG.onow = d.createElement('div')
@@ -57,19 +70,7 @@
     IG.imag.appendChild(IG.onow).appendChild(IG.wdow).appendChild(IG.down)
     IG.foot.appendChild(IG.fine)
   }
-
-  IG.cent.appendChild(IG.insi)
-  IG.imgs = d.createElement('img')
-  IG.cent.appendChild(IG.insi).appendChild(IG.imgs)
-  IG.imgs.setAttribute('alt', '')
-  // create empty image source
-  IG.imgs.src = 'data:,'
-
-  IG.clos.setAttribute('title', 'Press Esc to close')
-  IG.imag.setAttribute('tabindex', '-1')
-  IG.imag.className = 'hide7'
-
-  // append document fragment to BODY
+  // append document fragment to <body>
   d.body.appendChild(IG.frag)
 
   // autoplay method
@@ -98,15 +99,12 @@
     const src = this
     this.src = src.src
   }
-  // call method on image element
-  // IG.loaded.call(IG.imgs)
 
   // clear method to reset all values
   IG.clear = function () {
     clearTimeout(this.timeOutVar)
     this.timeOutVar = 0
     this.isAutoplayOn = false
-    this.isLoadedImage = false
     if (IG.showButtons) this.play.classList.remove('acts7')
     return this
   }
@@ -162,16 +160,10 @@
 
   // show image method to show image when loaded
   IG.show = function () {
-    this.insi.removeChild(this.insi.firstChild)
-    // creating image again for UX to show that image is loading
-    this.imgs = d.createElement('img')
-    this.loaded.call(this.imgs)
-    // this.imgs.setAttribute('alt', '')
-    this.insi.appendChild(this.imgs)
     // if null is set as index return false
     if (this.indexOfImage === null) return false
-    this.insi.className = 'spin7'
-    const image = this.IGArray[this.indexOfImage]
+    // if image exist remove and later recreate it
+    this.isLoadedImage && this.insi.removeChild(this.insi.firstChild)
     // don't rewrite values if active and set active gallery
     if (!this.isActive) {
       this.isActive = true
@@ -180,6 +172,15 @@
       this.imag.className = ''
       this.imag.focus()
     }
+    this.isLoadedImage = true
+    this.imgs = d.createElement('img')
+    this.insi.appendChild(this.imgs)
+    this.loaded.call(this.imgs)
+    this.insi.appendChild(this.imgs)
+    this.insi.className = 'spin7'
+    const image = this.IGArray[this.indexOfImage]
+    this.imgs.setAttribute('alt', image.getAttribute('alt'))
+
     // two lines below for hiding left right buttons
     this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
     this.rigt.className = this.indexOfImage === this.IGArray.length - 1 ? 'hide7' : ''
@@ -190,6 +191,7 @@
     this.imgs.onerror = function (e) { e.target.src = image.src }
     this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.substring(0, image.src.lastIndexOf('/') + 1) + this.folder + image.src.slice(image.src.lastIndexOf('/'))
   }
+
   // asign container elements or BODY (default = BODY)
   IG.container = d.getElementsByClassName(IG.imageContainer).length > 0
     ? d.getElementsByClassName(IG.imageContainer)
@@ -197,7 +199,8 @@
   for (let l = IG.container.length - 1; l >= 0; l--) {
     IG.IGContainersArray.push(IG.container[l])
   }
-  // Loop from elements
+
+  // Loop from elements and add to array
   for (let i = IG.IGContainersArray.length - 1; i >= 0; i--) {
     const img = IG.IGContainersArray[i].getElementsByTagName('img')
     for (let j = 0; j < img.length; j++) {
@@ -218,8 +221,6 @@
   }
 
   if (IG.IGContainersArray[0] && IG.IGContainersArray[0].tagName === 'BODY') {
-    // remove last element from array if body is selected
-    IG.IGArray.pop()
     d.body.addEventListener('click', listenForIG)
   } else {
     for (let k = IG.IGContainersArray.length - 1; k >= 0; k--) { IG.IGContainersArray[k].addEventListener('click', listenForIG) }
@@ -263,7 +264,6 @@
   const minHorizontalMove = 30
   const maxVerticalMove = 30
   const withinMs = 1000
-
   let startXPos
   let startYPos
   let startTime
@@ -281,11 +281,8 @@
     const moveY = endYPos - startYPos
     const elapsedTime = endTime - startTime
     if (Math.abs(moveX) > minHorizontalMove && Math.abs(moveY) < maxVerticalMove && elapsedTime < withinMs) {
-      if (moveX < 0) {
-        IG.clear().right().show()
-      } else {
-        IG.clear().lefts().show()
-      }
+      if (moveX < 0) IG.clear().right().show()
+      else IG.clear().lefts().show()
     }
   }
   IG.imag.addEventListener('touchstart', touchStart, { passive: true })
