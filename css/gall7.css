@@ -1,11 +1,10 @@
 body {
   margin: 0;
-  overflow-x: hidden;
 }
 
 #imag7 {
   background: #000;
-  color: #777;
+  color: #eee;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   height: 100%;
@@ -92,7 +91,7 @@ body {
 #clos7:hover,
 #left7:hover #ilef7,
 #rigt7:hover #irig7 {
-  background: rgba(77, 77, 77, 0.2);
+  background: rgba(0, 0, 0, 0.2);
   cursor: pointer;
   outline: 0;
 }
@@ -102,7 +101,6 @@ body {
   width: 16%;
   min-width: 72px;
   height: 100%;
-  background: none;
   z-index: 3;
 }
 
@@ -116,7 +114,7 @@ body {
   border-radius: 50%;
   border: 0;
   appearance: none;
-  background: none;
+  background: rgba(0, 0, 0, .2);
 }
 
 #ilef7,
@@ -184,15 +182,15 @@ body {
 }
 
 #ilef7::after {
-  border-left: 2px solid #777;
-  border-top: 2px solid #777;
+  border-left: 2px solid #eee;
+  border-top: 2px solid #eee;
   left: 14px;
 }
 
 #irig7::after {
   right: 14px;
-  border-right: 2px solid #777;
-  border-top: 2px solid #777;
+  border-right: 2px solid #eee;
+  border-top: 2px solid #eee;
 }
 
 #left7:hover #ilef7::after {
@@ -205,7 +203,7 @@ body {
 
 #clos7::after,
 #clos7::before {
-  border-left: 2px solid #777;
+  border-left: 2px solid #eee;
   content: '';
   display: block;
   height: 30px;
@@ -254,13 +252,13 @@ body {
 
 #insi7 img[src$=".svg"] {
   background: #fafafa;
-  /* background: linear-gradient(90deg, #777 7px, #000 7px) 0 0/14px 14px, linear-gradient(#777 7px, #000 7px) 0 0/ 14px 14px #777;
+  /* background: linear-gradient(90deg, #eee 7px, #000 7px) 0 0/14px 14px, linear-gradient(#eee 7px, #000 7px) 0 0/ 14px 14px #eee;
   background-blend-mode: exclusion; */
 }
 
 #down7 {
   border-radius: 0 0 2px 2px;
-  border: 2px solid #777;
+  border: 2px solid #eee;
   top: 27px;
   box-sizing: border-box;
   height: 6px;
@@ -274,7 +272,7 @@ body {
 #play7::before {
   transition: .2s border-radius;
   border-radius: 50%;
-  border: 2px solid #777;
+  border: 2px solid #eee;
   left: 12px;
   height: 24px;
   width: 24px;
@@ -298,7 +296,7 @@ body {
 }
 
 #play7::after {
-  border-color: transparent #777;
+  border-color: transparent #eee;
   border-style: solid;
   border-width: 5px 0 5px 12px;
   left: 19px;
@@ -312,8 +310,8 @@ body {
 }
 
 #down7::after {
-  border-bottom: 2px solid #777;
-  border-left: 2px solid #777;
+  border-bottom: 2px solid #eee;
+  border-left: 2px solid #eee;
   bottom: 3px;
   height: 12px;
   left: 4px;
@@ -322,7 +320,7 @@ body {
 }
 
 #down7::before {
-  background: #777;
+  background: #eee;
   height: 18px;
   left: 9px;
   margin: 0 auto;

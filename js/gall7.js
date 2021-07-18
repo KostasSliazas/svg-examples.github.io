@@ -7,7 +7,9 @@
   IG.folder = typeof getConfig.folder === 'string' ? getConfig.folder : 'big' // default folder 'big'
   IG.imageContainer = getConfig.imageContainer || 'images-container' // default class for images
   IG.timer = typeof getConfig.delaySeconds === 'number' && isFinite(getConfig.delaySeconds) ? getConfig.delaySeconds * 1000 : 2000 // delay for image auto showing
+  IG.hideButtonsOnPlay = typeof getConfig.hideButtonsOnPlay === 'boolean' ? getConfig.hideButtonsOnPlay : false // default autoPlayShowButtons true
   IG.showButtons = !(typeof getConfig.showButtons === 'boolean' && !getConfig.showButtons)
+
   // create all elements containers array
   IG.IGContainersArray = []
   // create all elements array
@@ -89,7 +91,6 @@
   IG.autoPlayLoop = function () {
     this.timeOutVar = setTimeout(function () {
       this.right().show()
-      this.hideButtons()
       if (this.indexOfImage === this.IGArray.length - 1) this.clear()
     }.bind(this), this.timer)
   }
@@ -106,7 +107,7 @@
     clearTimeout(this.timeOutVar)
     this.timeOutVar = 0
     this.isAutoplayOn = false
-    if (IG.showButtons) this.play.classList.remove('acts7')
+    this.showButtons && this.play.classList.remove('acts7')
     this.hideButtons()
     return this
   }
@@ -129,7 +130,7 @@
   IG.lefts = function () {
     if (this.indexOfImage > 0) this.indexOfImage--
     else this.indexOfImage = this.IGArray.length - 1
-    this.setActiveClass.call(this.ilef)
+    !this.isAutoplayOn && this.setActiveClass.call(this.ilef)
     return this
   }
 
@@ -137,7 +138,7 @@
   IG.right = function () {
     if (this.indexOfImage < this.IGArray.length - 1) this.indexOfImage++
     else this.indexOfImage = 0
-    this.setActiveClass.call(this.irig)
+    !this.isAutoplayOn && this.setActiveClass.call(this.irig)
     return this
   }
 
@@ -146,7 +147,7 @@
     this.clear()
     this.isActive = false
     this.imag.className = 'hide7'
-    d.body.style.overflowY = 'visible'
+    d.body.style.overflow = 'visible'
     d.children[0].style.overflow = 'visible'
   }
 
@@ -161,18 +162,16 @@
   }
   // Hide buttons on autoplay
   IG.hideButtons = function () {
-    if (this.isAutoplayOn) {
-      this.onow.className =
-      this.left.className =
-      this.rigt.className =
-      this.foot.className =
-      this.clos.className = 'hide7'
+    if (this.isAutoplayOn && this.hideButtonsOnPlay) {
+      this.left.className = this.rigt.className = this.clos.className = 'hide7'
+      if (this.showButtons) this.foot.className = this.onow.className = 'hide7'
     } else {
-      this.left.className =
-      this.rigt.className =
-      this.onow.className =
-      this.foot.className =
       this.clos.className = ''
+      if (this.showButtons) this.foot.className = this.onow.className = ''
+    }
+    if (!this.isAutoplayOn || !this.hideButtonsOnPlay) {
+      this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
+      this.rigt.className = this.indexOfImage === this.IGArray.length - 1 ? 'hide7' : ''
     }
   }
 
@@ -185,7 +184,7 @@
     // don't rewrite values if active and set active gallery
     if (!this.isActive) {
       this.isActive = true
-      d.body.style.overflowY = 'hidden'
+      d.body.style.overflow = 'hidden'
       d.children[0].style.overflow = 'hidden'
       this.imag.className = ''
       this.imag.focus()
@@ -198,15 +197,14 @@
     this.insi.className = 'spin7'
     const image = this.IGArray[this.indexOfImage]
     this.imgs.setAttribute('alt', image.getAttribute('alt'))
-
-    // two lines below for hiding left right buttons
-    this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
-    this.rigt.className = this.indexOfImage === this.IGArray.length - 1 ? 'hide7' : ''
-    if (IG.showButtons) {
+    this.hideButtons()
+    if (this.showButtons) {
       this.alts.innerText = decodeURI(image.src.slice(image.src.lastIndexOf('/') + 1))
       this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.IGArray.length
     }
-    this.imgs.onerror = function (e) { e.target.src = image.src }
+    this.imgs.onerror = function (e) {
+      e.target.src = image.src
+    }
     this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.substring(0, image.src.lastIndexOf('/') + 1) + this.folder + image.src.slice(image.src.lastIndexOf('/'))
   }
 
@@ -241,7 +239,9 @@
   if (IG.IGContainersArray[0] && IG.IGContainersArray[0].tagName === 'BODY') {
     d.body.addEventListener('click', listenForIG)
   } else {
-    for (let k = IG.IGContainersArray.length - 1; k >= 0; k--) { IG.IGContainersArray[k].addEventListener('click', listenForIG) }
+    for (let k = IG.IGContainersArray.length - 1; k >= 0; k--) {
+      IG.IGContainersArray[k].addEventListener('click', listenForIG)
+    }
   }
 
   // autoplay and image loaded helper to remove class 'loader'
@@ -286,6 +286,7 @@
   let startXPos
   let startYPos
   let startTime
+
   function touchStart (event) {
     startXPos = event.touches[0].pageX
     startYPos = event.touches[0].pageY
@@ -304,7 +305,9 @@
       else IG.clear().lefts().show()
     }
   }
-  IG.imag.addEventListener('touchstart', touchStart, { passive: true })
+  IG.imag.addEventListener('touchstart', touchStart, {
+    passive: true
+  })
   IG.imag.addEventListener('touchend', touchEnd)
   // everything to handle swipe left/right ends
 })(window, document)
