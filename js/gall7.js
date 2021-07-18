@@ -89,6 +89,7 @@
   IG.autoPlayLoop = function () {
     this.timeOutVar = setTimeout(function () {
       this.right().show()
+      this.hideButtons()
       if (this.indexOfImage === this.IGArray.length - 1) this.clear()
     }.bind(this), this.timer)
   }
@@ -106,6 +107,7 @@
     this.timeOutVar = 0
     this.isAutoplayOn = false
     if (IG.showButtons) this.play.classList.remove('acts7')
+    this.hideButtons()
     return this
   }
 
@@ -155,6 +157,22 @@
       setTimeout(function () {
         this.classList.remove('focu7')
       }.bind(this), 150)
+    }
+  }
+  // Hide buttons on autoplay
+  IG.hideButtons = function () {
+    if (this.isAutoplayOn) {
+      this.onow.className =
+      this.left.className =
+      this.rigt.className =
+      this.foot.className =
+      this.clos.className = 'hide7'
+    } else {
+      this.left.className =
+      this.rigt.className =
+      this.onow.className =
+      this.foot.className =
+      this.clos.className = ''
     }
   }
 
@@ -241,6 +259,7 @@
       if (IG.IGArray[IG.indexOfImage].src === IG.onow.dataset.selected) return false
       IG.clear().downloads()
     }
+    if (e.target.id === 'cent7' && IG.isAutoplayOn) IG.clear()
     e.target.id === 'rigt7' && IG.clear().right().show()
     e.target.id === 'left7' && IG.clear().lefts().show()
     e.target.id === 'play7' && IG.autoPlay()
