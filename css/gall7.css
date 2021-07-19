@@ -129,7 +129,8 @@ body {
 #clos7:after,
 #imag7,
 #left7,
-#rigt7 {
+#rigt7,
+#wdow7 {
   top: 0;
 }
 
@@ -142,7 +143,6 @@ body {
 #wdow7,
 #rigt7 {
   right: 0;
-  top: 0;
 }
 
 #clos7 {
@@ -222,7 +222,6 @@ body {
   overscroll-behavior: contain;
   overflow: hidden;
   left: 0;
-  text-align: center;
 }
 
 #cent7 {
@@ -240,6 +239,7 @@ body {
   margin: 0 auto;
   position: relative;
   pointer-events: none;
+  text-align: center;
 }
 
 #insi7 img {
