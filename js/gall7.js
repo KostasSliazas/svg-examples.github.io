@@ -1,20 +1,18 @@
 (function (w, d) {
   'use strict'
-  // create empty object
   const IG = Object.create(null)
-  // imageGalleryConfig variables
-  const getConfig = typeof w.imageGalleryConfig !== 'undefined' && w.imageGalleryConfig
-  IG.folder = typeof getConfig.folder === 'string' ? getConfig.folder : 'big' // default folder 'big'
-  IG.imageContainer = getConfig.imageContainer || 'images-container' // default class for images
-  IG.timer = typeof getConfig.delaySeconds === 'number' && isFinite(getConfig.delaySeconds) ? getConfig.delaySeconds * 1000 : 2000 // delay for image auto showing
-  IG.hideButtonsOnPlay = typeof getConfig.hideButtonsOnPlay === 'boolean' ? getConfig.hideButtonsOnPlay : false // default autoPlayShowButtons true
-  IG.showButtons = !(typeof getConfig.showButtons === 'boolean' && !getConfig.showButtons)
-
-  // create all elements containers array
+  // imageGalleryConfig variables with defaults
+  // not using dot notation to not shorten variable names compile with google closure
+  const getConfig = typeof w['imageGalleryConfig'] === 'undefined' || w['imageGalleryConfig']
+  IG.folder = getConfig['folder'] || 'big' // default folder 'big'
+  IG.imageContainer = getConfig['imageContainer'] || 'images-container'
+  IG.timer = typeof getConfig['delaySeconds'] === 'number' && isFinite(getConfig['delaySeconds']) ? getConfig['delaySeconds'] * 1000 : 2000
+  IG.hideButtonsOnPlay = typeof getConfig['hideButtonsOnPlay'] === 'boolean' ? getConfig['hideButtonsOnPlay'] : false
+  IG.showButtons = typeof getConfig['showButtons'] === 'boolean' ? getConfig['showButtons'] : true
+  // elements containers array
   IG.IGContainersArray = []
-  // create all elements array
+  // all elements array
   IG.IGArray = []
-
   // initialize container with null value
   IG.container = null
   IG.indexOfImage = 0
@@ -22,7 +20,6 @@
   IG.isAutoplayOn = false
   IG.timeOutVar = 0
   IG.isLoadedImage = false
-
   // all stuff for creating main gallery window
   IG.frag = d.createDocumentFragment()
   IG.clos = d.createElement('button')
@@ -80,9 +77,11 @@
     if (this.isAutoplayOn) {
       this.clear()
     } else {
-      if (IG.showButtons) this.play.className = 'acts7'
+      if (IG.showButtons) {
+        this.play.className = 'acts7'
+        this.setActiveClass.call(this.play)
+      }
       this.isAutoplayOn = true
-      this.setActiveClass.call(this.play)
       this.loaded.call(this.imgs)
     }
   }
@@ -148,7 +147,7 @@
     this.isActive = false
     this.imag.className = 'hide7'
     d.body.style.overflow = 'visible'
-    d.children[0].style.overflow = 'visible'
+    d.getElementsByTagName('html')[0].style.overflow = 'visible'
   }
 
   // add class for button animation (when clicked)
@@ -185,7 +184,7 @@
     if (!this.isActive) {
       this.isActive = true
       d.body.style.overflow = 'hidden'
-      d.children[0].style.overflow = 'hidden'
+      d.getElementsByTagName('html')[0].style.overflow = 'hidden'
       this.imag.className = ''
       this.imag.focus()
     }
