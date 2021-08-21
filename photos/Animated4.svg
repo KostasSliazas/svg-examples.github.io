@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="tests.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#edbbe8"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.89803922"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="30.833946"
+     inkscape:cy="33.847783"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg8"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="703"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="true"
+     borderlayer="false"
+     inkscape:showpageshadow="false"
+     showguides="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     scale-x="1"
+     units="px"
+     showborder="true"
+     inkscape:snap-page="true" 
+      />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="opacity:1;fill:#2ca05a;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+     d="M 21.822266,0 V 22.392578 H 0 V 42.75 H 21.822266 V 64 H 42.177734 V 42.75 H 64 V 22.392578 H 42.177734 V 0 Z"
+     id="plus"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccccc" />
+  <rect
+     style="opacity:1;fill:#fff;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+     id="reca1"
+     width="64"
+     height="64"
+     x="0"
+     y="0" />
+  <rect
+     style="opacity:1;fill:#fff;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+     id="reca2"
+     width="64"
+     height="64"
+     x="0"
+     y="0" />
+    <animate xlink:href="#plus" id="anims" begin="reca2.click" fill="freeze" attributeName="d" dur="200ms" repeatCount="0" to="m 21.822266,22.392578 v 0 H 0 V 42.75 h 21.822266 v 0 h 20.355468 v 0 H 64 V 22.392578 H 42.177734 v 0 z" />
+    <animate xlink:href="#plus" id="anims1" begin="anims.end" fill="freeze" repeatCount="0" attributeName="fill" dur="100ms" to="#d40055" />
+    <animateTransform xlink:href="#reca1" id="anims2" attributeName="transform" fill="freeze" type="scale" to="1 1" begin="anims1.end" dur="1ms" repeatCount="0"/>
+    <animateTransform xlink:href="#reca2" id="anims3" attributeName="transform" fill="freeze" type="scale" to="0 0" begin="anims2.end" dur="1ms" repeatCount="0"/>
+    <animate xlink:href="#plus" id="anims4" begin="reca1.click" fill="freeze" attributeName="d" dur="200ms" repeatCount="0" to="M 21.822266,0 V 22.392578 H 0 V 42.75 H 21.822266 V 64 H 42.177734 V 42.75 H 64 V 22.392578 H 42.177734 V 0 Z" />
+    <animate xlink:href="#plus" id="anims5" begin="anims4.end" fill="freeze" repeatCount="0" attributeName="fill" dur="100ms" to="#2ca05a" />
+    <animateTransform xlink:href="#reca1" id="anims6" attributeName="transform" fill="freeze" type="scale" to="0 0" begin="anims5.end" dur="1ms" repeatCount="0"/>
+    <animateTransform xlink:href="#reca2" id="anims7" attributeName="transform" fill="freeze" type="scale" to="1 1" begin="anims6.end" dur="1ms" repeatCount="0"/>
+</svg>
