@@ -188,14 +188,8 @@
       this.imag.className = ''
       this.imag.focus()
     }
-    this.isLoadedImage = true
-    this.imgs = d.createElement('img')
-    this.insi.appendChild(this.imgs)
-    this.loaded.call(this.imgs)
-    this.insi.appendChild(this.imgs)
-    this.insi.className = 'spin7'
+
     const image = this.imagesArray[this.indexOfImage]
-    this.imgs.setAttribute('alt', image.getAttribute('alt'))
     this.hideButtons()
     if (this.showButtons) {
       this.alts.innerText = decodeURI(image.src.slice(image.src.lastIndexOf('/') + 1))
@@ -204,17 +198,17 @@
 
     // get image src file name
     const fileName = image.src.split('/').pop()
-    setTimeout(function () {
-      // if there is no big image return small image src
-      this.imgs.onerror = function (e) {
-        e.target.src = image.src
-      }
-      // if image src === svg return that image.src else try to load big image src
-      this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName)
-    }.bind(this), 0)
+    this.imgs = d.createElement('img')
+    this.imgs.setAttribute('alt', image.getAttribute('alt') || 'No alt attribute')
+    this.imgs.onerror = function (e) { e.target.src = image.src }
+    this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName)
+    this.insi.appendChild(this.imgs)
+    this.insi.className = 'spin7'
+    this.loaded.call(this.imgs)
+    this.isLoadedImage = true
   }
 
-  // asign container elements or BODY (default = BODY)
+  // assign container elements or BODY (default = BODY)
   IG.container = d.getElementsByClassName(IG.imageContainer).length > 0
     ? d.getElementsByClassName(IG.imageContainer)
     : d.getElementsByTagName('body')
@@ -262,7 +256,7 @@
 
   // add click addEventListener to image div (gallery window)
   IG.imag.addEventListener('click', function (e) {
-    if (!IG.isActive) return false
+    if (!IG.isActive) return
     if (e.target.id === 'wdow7' && IG.imagesArray[IG.indexOfImage].src.split('/').pop() !== IG.onow.dataset.selected) IG.clear().downloads()
     if (e.target.id === 'cent7' && IG.isAutoplayOn) IG.clear()
     e.target.id === 'rigt7' && IG.clear().right().show()
@@ -275,7 +269,7 @@
 
   // add keyup addEventListener to image div (gallery window)
   w.addEventListener('keyup', function (e) {
-    if (!IG.isActive || e.isComposing || e.key === 229) return false
+    if (!IG.isActive || e.isComposing || e.key === 229) return
     e.key === 'ArrowLeft' && IG.clear().lefts().show()
     e.key === 'ArrowRight' && IG.clear().right().show()
     e.key === 'Escape' && IG.close()
@@ -310,9 +304,7 @@
       else IG.clear().lefts().show()
     }
   }
-  IG.imag.addEventListener('touchstart', touchStart, {
-    passive: true
-  })
+  IG.imag.addEventListener('touchstart', touchStart, { passive: true })
   IG.imag.addEventListener('touchend', touchEnd)
   // everything to handle swipe left/right ends
 })(window, document)
